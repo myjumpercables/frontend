@@ -34,7 +34,7 @@ const AccountView = (props) => {
                     <form>
                         <div className="">
                             <div className="form-group">
-                                <label htmlFor="emailInput">Update Email address</label>
+                                <label htmlFor="emailInput">Update Email Address</label>
                                 <input type="email" className="form-control" id="emailUpdateInput" placeholder="name@example.com"/>
                             </div>
                             <div className="form-group d-flex justify-content-between">
