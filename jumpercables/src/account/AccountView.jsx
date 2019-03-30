@@ -14,8 +14,20 @@ const AccountView = (props) => {
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div className="modal-body">
-                
+            <div className="modal-body container">
+                <form className="row justify-content-center">
+                    <div className="form-group col-6">
+                        <label htmlFor="validPassword">Enter Your Password</label>
+                        <div className="input-group" id="show_hide_password">
+                            <input type="password" className="form-control" id="validatePassword"/>
+                            <div className="input-group-addon">
+                                <button className="btn" onClick={mods.skipDefault}>
+                                    <i className="fa fa-eye-slash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
