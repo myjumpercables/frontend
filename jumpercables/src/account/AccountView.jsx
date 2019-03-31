@@ -88,7 +88,7 @@ const AccountView = (props) => {
                         </button>
                         <button className="h-100 m-2 bg-2h-100 shadow-sm w-100 btn btn-light btn-outline" data-toggle="modal" data-target="#managePassword" onClick={util.skipDefault}>
                             <div>
-                                <i className="mr-3 ml-3 bg-2 fa fa-user fa-4x"></i>
+                                <i className="mr-3 ml-3 bg-2 fas fa-lock fa-4x"></i>
                                 <div className="font-weight-bold">Manage Password</div>
                             </div>
                         </button>
@@ -119,7 +119,7 @@ const getControl = (flag) => {
             oldPassword: document.getElementById('oldPassword'),
             oldPasswordError: document.getElementById('oldPasswordError'),
             newPassword: document.getElementById('newPassword'),
-            newPasswordError: document.getElementById('oldPasswordError'),
+            newPasswordError: document.getElementById('newPasswordError'),
             newPasswordCheck: document.getElementById('newPasswordCheck'),
             newPasswordCheckError: document.getElementById('newPasswordCheckError'),
         }
@@ -189,7 +189,7 @@ const savePassword = (e) => {
         }
     }
     else {
-        controls.newPasswordCheck.innerHTML="You must enter you new password";
+        controls.newPasswordError.innerHTML="You must enter you new password";
         return;
     }
 }
