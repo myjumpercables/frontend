@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './styles/AccountView.css';
 import util from '../utils/mods.jsx';
-
 
 const AccountView = (props) => {
     return (
@@ -134,8 +133,9 @@ const saveAccountDetails= (e) => {
     let controls = getControl(1);
     let updateObj = {};
     let validEmailPattern = /.+@.+\..+/;
-
     e.preventDefault();
+
+    //checks if potenially valid email. assigns to update packet if yes
     if(controls.email.value.match(validEmailPattern)) {
         updateObj['email'] = controls.email.value;
     }
@@ -159,6 +159,7 @@ const saveAccountDetails= (e) => {
     }
 }
 
+// clears Email/Username Modal
 const clearEUModal = (e) => {
     let controls = getControl(1);
     for(var key in controls) {
@@ -167,6 +168,7 @@ const clearEUModal = (e) => {
     }
 }
 
+// controls Manage Password Modal
 const savePassword = (e) => {
     let controls = getControl(2);
     e.preventDefault();
