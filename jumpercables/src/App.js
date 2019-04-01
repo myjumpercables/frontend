@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {CreateAccount} from './account/CreateAccount'
+import CreateAccount from './account/CreateAccount'
 import './App.css';
 import './account/AccountView';
 import './account/LoginView';
