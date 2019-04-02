@@ -10,7 +10,7 @@ import LoginView from './account/LoginView';
   render() {
     return (
         <>
-          <LoginView></LoginView>
+          <CreateAccount></CreateAccount>
         </>
     );
   }
