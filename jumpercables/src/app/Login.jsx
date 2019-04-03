@@ -1,7 +1,9 @@
-import React from 'react';
-import './styles/LoginView.css';
+import React, {Component} from 'react';
+import './styles/Login.css';
 
-const LoginView = (props) => {
+export class Login extends Component {
+        
+    render() {
     return (
     <>
         <div className="container d-flex justify-content-center mt-2">
@@ -35,10 +37,9 @@ const LoginView = (props) => {
         </div>
     </>
     );
+    }
 }
 
 const loginRequest = () => {
 
 }
-
-export default LoginView;
