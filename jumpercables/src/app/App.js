@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import './ManageAccount';
-import './Login';
-import { OfflineView } from './OfflineView'
+import { Main } from './Main';
 
   class App extends Component {
   render() {
     return (
         <>
-          <OfflineView></OfflineView>
+          <Main></Main>
         </>
     );
   }
