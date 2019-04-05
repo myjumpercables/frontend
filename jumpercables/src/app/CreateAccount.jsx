@@ -6,11 +6,12 @@ export class CreateAccount extends Component {
     render() {
 
         return (
+        <>
         <div className="container d-flex justify-content-center mt-2">
-            <div className="flex-column">
+            <div className="flex-column w-100">
                 <div className="d-flex mb-2">
                     <h2 className="m-auto">
-                        Create an Account
+                        CREATE AN ACCOUNT
                     </h2>
                 </div>
 
@@ -45,6 +46,7 @@ export class CreateAccount extends Component {
                 </div>
             </div>
         </div>
+        </>
         );
     }
 }

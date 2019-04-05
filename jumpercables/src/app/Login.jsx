@@ -9,21 +9,17 @@ export class Login extends Component {
         <div className="flex-column">
             <div className="d-flex mb-2">
                 <h2 className="m-auto">
-                    LOGIN VIEW
+                    SIGN-IN
                 </h2>
             </div>
             <div className="d-flex align-items-center">
                 <form>
-                    <div className="mb-2 input-group">
-                        <div className="input-group-prepend">
-                            <span class="input-group-text" htmlFor="loginEmail">Username</span>
-                        </div>
+                    <div className="mb-2 form-group">
+                        <label className="" htmlFor="loginEmail">Username</label>
                         <input type="email" className="form-control" id="loginEmail" defaultValue=""/>
                     </div>
-                    <div className="mb-2 input-group">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text" htmlFor="loginPassword">Password</span>
-                        </div>
+                    <div className="mb-2 form-group">
+                        <label className="" htmlFor="loginPassword">Password</label>
                         <input type="password" className="form-control" id="loginPassword" defaultValue=""/>
                     </div>
                     <div className="btn-group w-100">
