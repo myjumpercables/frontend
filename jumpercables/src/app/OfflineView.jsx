@@ -10,7 +10,6 @@ export class OfflineView extends Component {
     }
     
     switchForm(e){
-        console.log("hello")
         this.setState((state, props) => ({
             LoginForm: !state.LoginForm,
         }))
