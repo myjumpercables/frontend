@@ -37,7 +37,7 @@ export class OfflineView extends Component {
                     { this.state.loginForm && <Login loginError={this.state.loginError} onLoginAttempt={log => this.onLoginAttempt(log)}></Login>}
                     {!this.state.loginForm && <CreateAccount createAccountError={this.state.createAccountError} onCreateAccount={acc => this.onCreateAccount(acc)}></CreateAccount>}
                     <div className="d-flex justify-content-center">
-                    <button className="btn btn-link mt-4 " onClick={e => this.switchForm(e)}>Switch to { (this.state.LoginForm) ? "Create Account" : "Login" }</button>
+                    <button className="btn btn-link mt-4 " onClick={e => this.switchForm(e)}>Switch to { (this.state.loginForm) ? "Create Account" : "Login" }</button>
                     </div>
                 </div>
             </div>
