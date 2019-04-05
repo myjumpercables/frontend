@@ -2,6 +2,26 @@ import React, {Component} from 'react';
 import './styles/Login.css';
 
 export class Login extends Component {
+    
+    
+    state={
+        loginUser: "",
+        loginPassword: "",
+    }
+    
+    loginAttempt(e) {
+        e.preventDefault();
+        if(this.isValidForm()) {
+            this.props.onLoginAttempt({name: this.state.loginUser, password: this.state.loginPassword});
+        }
+    }
+
+    isValidForm() {
+        /* TODO: return false if forms aren't valid 
+        And write to page what needs to be changed*/
+        return true;
+    }
+
     render() {
     return (
     <>
@@ -16,15 +36,14 @@ export class Login extends Component {
                 <form>
                     <div className="mb-2 form-group">
                         <label className="" htmlFor="loginEmail">Username</label>
-                        <input type="email" className="form-control" id="loginEmail" defaultValue=""/>
+                        <input onChange={e => this.setState({ loginUser : e.target.value })} type="email" className="form-control" id="loginEmail" value={this.state.loginUser}/>
                     </div>
                     <div className="mb-2 form-group">
                         <label className="" htmlFor="loginPassword">Password</label>
-                        <input type="password" className="form-control" id="loginPassword" defaultValue=""/>
+                        <input onChange={e => this.setState({ loginPassword : e.target.value })} type="password" className="form-control" id="loginPassword" defaultValue=""/>
                     </div>
                     <div className="btn-group w-100">
-                        <button type="button" className="w-50 btn btn-primary" onClick={loginRequest}>Login</button>
-                        <button type="button" className="w-50 btn btn-secondary" onClick={loginRequest}>Sign-Up</button>
+                        <button type="button" className="w-50 btn btn-primary" onClick={e => this.loginAttempt(e)}>Login</button>
                     </div>
                 </form>
             </div>
@@ -33,8 +52,4 @@ export class Login extends Component {
     </>
     );
     }
-}
-
-const loginRequest = () => {
-
 }
