@@ -1,0 +1,15 @@
+.fa,.fas {
+    color: white;
+}
+
+#main-page {
+    background-image: url(./Local-Repair-Shop.jpg);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+}
+
+button {
+    outline: none !important;
+}

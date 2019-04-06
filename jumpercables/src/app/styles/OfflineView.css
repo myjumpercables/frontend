@@ -3,6 +3,10 @@
 }
 
 body {
+    min-height: 100%;
+}
+
+#offlineview {
     margin-top: 2%;
 }
 
