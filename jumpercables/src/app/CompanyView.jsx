@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CompanyViewSearch } from './CompanyViewSearch';
+import  { CompanyViewUserInfo } from './CompanyViewUserInfo'
 
 export class CompanyView extends Component {
     state = {
