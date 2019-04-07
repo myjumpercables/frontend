@@ -40,7 +40,8 @@ export class Login extends Component {
                     </div>
                     <div className="mb-2 form-group">
                         <label className="" htmlFor="loginPassword">Password</label>
-                        <input onChange={e => this.setState({ loginPassword : e.target.value })} type="password" className="form-control" id="loginPassword" defaultValue=""/>
+                        <input 
+                            onChange={e => this.setState({ loginPassword : e.target.value })} type="password" className="form-control" id="loginPassword" value={this.state.loginPassword}/>
                     </div>
                     <div className="btn-group w-100">
                         <button type="button" className="w-50 btn btn-primary" onClick={e => this.loginAttempt(e)}>Login</button>
