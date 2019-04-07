@@ -4,18 +4,24 @@ export class CompanyViewSearch extends Component {
     state = {
         // switching false searches by id
         searchByType: true,
+        searchValue: "",
     }
 
     usernameExample = "Username (e.g. Joe Bob)";
     idExample = "ID (e.g. 1239765)";
 
-    searchToggle(e){
+    searchToggle(e) {
         e.preventDefault();
         document.getElementById("searchForm").placeholder = (!this.state.searchByType) ? this.usernameExample : this.idExample;
         this.setState((state, props) => ({
             searchByType: !state.searchByType,
             searchValue: "",
         }))
+    }
+
+    searchUser() {
+        console.log(this.state.searchValue);
+        console.log(this.state.searchByType);
     }
 
     render() {
@@ -42,7 +48,10 @@ export class CompanyViewSearch extends Component {
                         onChange={e => this.setState({ searchValue : e.target.value })}
                     />
 
-                    <button name="searchButton" id="searchButton" className="btn btn-secondary">Go</button>
+                    <button name="searchButton" 
+                    id="searchButton" 
+                    className="btn btn-secondary"
+                    onClick={e => this.searchUser(e)}>Go</button>
                 </div>
             </div>
         );

@@ -17,7 +17,7 @@ export const OnlineViewHeader = (props) => {
         </div>
         <div className="container col d-flex justify-content-end align-items-center">
             <div className="pl-4 pr-4">
-            <i class="fas fa-wrench fa-lg"/>
+            <i className="fas fa-wrench fa-lg"/>
             </div>
         </div>
         </header>
