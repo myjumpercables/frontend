@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CarForm from "./CarForm";
 import CarList from "./CarList";
 
-export class Cars extends React.Component {
+export class Cars extends Component {
   state = {
     cars: []
   };

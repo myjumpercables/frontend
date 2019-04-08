@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Cars } from './Cars';
 
 export class UserView extends Component {
     state = {
@@ -12,7 +13,8 @@ export class UserView extends Component {
     render() {
         return(
             <>
-                <h2>YOUR CARS</h2>
+                {<Cars></Cars>}
+                Hey
             </>
         );
     }
