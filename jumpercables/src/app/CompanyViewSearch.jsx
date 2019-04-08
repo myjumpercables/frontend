@@ -35,7 +35,7 @@ export class CompanyViewSearch extends Component {
                         className="btn btn-secondary input-group-text" 
                         onClick={e => this.searchToggle(e)}
                     >
-                        Search by {this.state.searchByType ? "Username" : "ID"}
+                    {this.state.searchByType ? "Username" : "ID"}
                     </button>
                     </div>
 

@@ -4,6 +4,7 @@ import  { CompanyViewUserInfo } from './CompanyViewUserInfo'
 
 export class CompanyView extends Component {
     state = {
+        currUserId: "",
     }
 
     searchUser(user) {
