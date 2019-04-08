@@ -15,7 +15,7 @@ export class OnlineView extends Component {
             <>
             <OnlineViewHeader userType={this.state.userType} username={this.state.username}></OnlineViewHeader>
             {this.state.userType === "company" && <CompanyView username></CompanyView>}
-            {this.state.userType !== "user" && <UserView></UserView>}
+            {!(this.state.userType === "company") && <UserView></UserView>}
             </>
         );
     }

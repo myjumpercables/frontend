@@ -12,7 +12,7 @@ export class UserView extends Component {
     render() {
         return(
             <>
-                <hr/>
+                <h2>YOUR CARS</h2>
             </>
         );
     }
