@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+
 import './styles/Login.css';
 
 export class Login extends Component {
@@ -43,6 +45,8 @@ export class Login extends Component {
                         <input 
                             onChange={e => this.setState({ loginPassword : e.target.value })} type="password" className="form-control" id="loginPassword" value={this.state.loginPassword}/>
                     </div>
+                    <Link to="/register">Switch to Create Account</Link>
+                    <hr/>
                     <div className="btn-group w-100">
                         <button type="button" className="w-50 btn btn-primary" onClick={e => this.loginAttempt(e)}>Login</button>
                     </div>

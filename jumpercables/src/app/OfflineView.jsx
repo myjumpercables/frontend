@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Login } from './Login';
 import { CreateAccount } from './CreateAccount';
+import {BrowserRouter as Router, Route, Switch,  Redirect, withRouter } from 'react-router-dom';
+
+
 import './styles/OfflineView.css';
 
 export class OfflineView extends Component {
@@ -28,8 +31,26 @@ export class OfflineView extends Component {
         console.log(account);
     }
 
+    switchChange(e) {
+
+    }
+
     render() {
-    return (
+    return(
+        <Router>
+            <div id="offlineview" className="container d-flex justify-content-center">
+            <div className="flex-column justify-content-center bg-light border pb-2" id="removewidth">
+            <Switch>
+                {<Route path="/register" component={CreateAccount}/>}
+                {<Route path="/login"  component={Login}/>}
+                <Redirect to="/register"/>
+            </Switch>
+            </div>
+            </div>
+        </Router>
+    );
+    
+        {/*return (
         <div id="offlineview" className="container d-flex justify-content-center">
             <div className="flex-column justify-content-center bg-light border pb-2" id="removewidth">
                 { this.state.loginForm && <Login loginError={this.state.loginError} onLoginAttempt={log => this.onLoginAttempt(log)}></Login>}
@@ -39,6 +60,6 @@ export class OfflineView extends Component {
                 </div>
             </div>
         </div>
-        );
+    ); */}
     }
   }
