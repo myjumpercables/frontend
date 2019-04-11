@@ -6,7 +6,7 @@ import { UserView } from './UserView';
 
 export class OnlineView extends Component {
     state = {
-        // these should be based on props
+        //TODO: these should be based on props
         userType: "user",
         username: "YourCompanyHere",
     }
