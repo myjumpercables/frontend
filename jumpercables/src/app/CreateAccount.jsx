@@ -69,7 +69,7 @@ export class CreateAccount extends Component {
                             <input onChange={e => this.setState({ birthday : e.target.value })} value={this.state.birthday} type="date" className="form-control" id="BirthdayInput" placeholder="Birthday"/>
                         </div>
                         <div class="form-check">
-                        <input class="form-check-input" type="checkbox" onChange={e => this.setState({ isCompany : mods.handleCheckboxChange() })} value={this.state.isCompany} id="companyCheck"/>
+                        <input class="form-check-input" type="checkbox" onChange={e => this.setState({ isCompany : mods.handleCheckboxChange(e) })} value={this.state.isCompany} id="companyCheck"/>
                             <label class="form-check-label" for="companyCheck">
                             This is an organization
                             </label>
