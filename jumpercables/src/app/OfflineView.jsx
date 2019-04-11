@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Login } from './Login';
 import { CreateAccount } from './CreateAccount';
-import {BrowserRouter as Router, Route, Switch,  Redirect, withRouter } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch,  Redirect} from 'react-router-dom';
 
 
 import './styles/OfflineView.css';
@@ -49,17 +49,5 @@ export class OfflineView extends Component {
             </div>
         </Router>
     );
-    
-        {/*return (
-        <div id="offlineview" className="container d-flex justify-content-center">
-            <div className="flex-column justify-content-center bg-light border pb-2" id="removewidth">
-                { this.state.loginForm && <Login loginError={this.state.loginError} onLoginAttempt={log => this.onLoginAttempt(log)}></Login>}
-                {!this.state.loginForm && <CreateAccount createAccountError={this.state.createAccountError} onCreateAccount={acc => this.onCreateAccount(acc)}></CreateAccount>}
-                <div className="d-flex justify-content-center">
-                <button className="btn btn-link mt-4 " onClick={e => this.switchForm(e)}>Switch to { (this.state.loginForm) ? "Create Account" : "Login" }</button>
-                </div>
-            </div>
-        </div>
-    ); */}
     }
   }

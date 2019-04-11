@@ -6,11 +6,20 @@ export class Main extends Component {
     state= {
         login: false
     }
+
+    onLogin(e) {
+        this.setState({login: true});
+    }
+
+    onLogout(e) {
+
+    }
+
     render() {
         return(
             <>
-            {!this.state.login && <OfflineView></OfflineView>}
-            {this.state.login && <OnlineView></OnlineView>}
+            {!this.state.login && <OfflineView onLogin={e => this.onLogin(e)}></OfflineView>}
+            {this.state.login && <OnlineView offLogin={e => this.offLogout(e)}></OnlineView>}
             </>
         )
     }
