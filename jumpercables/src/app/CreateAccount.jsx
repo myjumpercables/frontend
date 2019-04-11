@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AccountRegister } from '../models/AccountRegister';
+import mods from '../utils/mods'
 export class CreateAccount extends Component {
 
     state = {
@@ -8,6 +9,7 @@ export class CreateAccount extends Component {
         password: '',
         re_password: '',
         birthday: new Date(),
+        isCompany: false,
     };
 
     registerAccount(e) {
@@ -66,6 +68,13 @@ export class CreateAccount extends Component {
                             <label htmlFor="BirthdayInput">Birthday</label>
                             <input onChange={e => this.setState({ birthday : e.target.value })} value={this.state.birthday} type="date" className="form-control" id="BirthdayInput" placeholder="Birthday"/>
                         </div>
+                        <div class="form-check">
+                        <input class="form-check-input" type="checkbox" onChange={e => this.setState({ isCompany : mods.handleCheckboxChange() })} value={this.state.isCompany} id="companyCheck"/>
+                            <label class="form-check-label" for="companyCheck">
+                            This is an organization
+                            </label>
+                        </div>
+                        <hr/>
                         <button type="submit" className="btn btn-primary" onClick={e => this.registerAccount(e)}>Submit</button>
                     </form>
                 </div>

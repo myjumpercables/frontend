@@ -4,7 +4,7 @@ import { OnlineView } from './OnlineView';
 
 export class Main extends Component {
     state= {
-        login: true
+        login: false
     }
     render() {
         return(
