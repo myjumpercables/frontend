@@ -34,27 +34,5 @@ export class Main extends Component {
             }
         </Router>
         )
-
-        if(!this.state.login) {
-            return(
-                <OfflineView onLogin={e => this.onLogin(e)}></OfflineView>
-            )
-        }
-        else {
-            return(
-                <Router>
-                <Redirect to={`/user/${this.state.activeUserId}`}
-                    render={(props) => <OnlineView {...props} activeUsername={this.state.activeUsername}/>}
-                />
-                </Router>
-            )
-        }
-
-        return(
-            <>
-            {!this.state.login && <OfflineView onLogin={e => this.onLogin(e)}></OfflineView>}
-            {this.state.login && <OnlineView offLogin={e => this.offLogout(e)}></OnlineView>}
-            </>
-        )
     }
 }

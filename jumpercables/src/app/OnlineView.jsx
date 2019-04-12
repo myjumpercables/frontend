@@ -3,7 +3,7 @@ import './styles/OnlineView.css'
 import { OnlineViewHeader } from './OnlineViewHeader';
 import { CompanyView } from './CompanyView';
 import { UserView } from './UserView';
-import {BrowserRouter as Router, Route, Switch,  Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 export class OnlineView extends Component {
     state = {
