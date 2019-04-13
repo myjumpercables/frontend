@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Cars } from './Cars';
+import { Repair } from './Repair'
 
 export class UserView extends Component {
     state = {
@@ -13,8 +14,7 @@ export class UserView extends Component {
     render() {
         return(
             <>
-                {<Cars></Cars>}
-                Hey
+                {<Repair></Repair>}
             </>
         );
     }
