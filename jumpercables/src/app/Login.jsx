@@ -12,7 +12,7 @@ export class Login extends Component {
     loginAttempt(e) {
         e.preventDefault();
         if(this.isValidForm()) {
-            this.props.onLoginAttempt({name: this.state.loginUser, password: this.state.loginPassword});
+            this.props.onLoginAttempt({username: this.state.loginUser, password: this.state.loginPassword});
         }
     }
 
