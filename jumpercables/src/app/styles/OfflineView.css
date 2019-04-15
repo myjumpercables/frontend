@@ -2,7 +2,7 @@
     margin: auto;
 }
 
-body {
+body, html {
     min-height: 100%;
 }
 

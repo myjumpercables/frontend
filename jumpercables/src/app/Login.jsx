@@ -1,19 +1,21 @@
 import React, {Component} from 'react';
 import './styles/Login.css';
+import { User } from '../api';
 
 export class Login extends Component {
-    
-    
+    user = new User();
+
     state={
         loginUser: "",
         loginPassword: "",
     }
     
     loginAttempt(e) {
-        e.preventDefault();
-        if(this.isValidForm()) {
-            this.props.onLoginAttempt({username: this.state.loginUser, password: this.state.loginPassword});
-        }
+        this.props.onLoginAttempt(this.state.username, this.state.password);
+    }
+
+    componentWillMount() {
+        this.user.logout();
     }
 
     isValidForm() {
@@ -25,11 +27,11 @@ export class Login extends Component {
     render() {
     return (
     <>
-        <div className="container d-flex justify-content-center mt-2">
+        <div className="container d-flex justify-content-center">
         <div className="flex-column">
             <div className="d-flex mb-2">
                 <h2 className="m-auto">
-                    SIGN-IN
+                    LOGIN
                 </h2>
             </div>
             <div className="d-flex align-items-center">
@@ -44,7 +46,7 @@ export class Login extends Component {
                             onChange={e => this.setState({ loginPassword : e.target.value })} type="password" className="form-control" id="loginPassword" value={this.state.loginPassword}/>
                     </div>
                     <div className="btn-group w-100">
-                        <button type="button" className="w-50 btn btn-primary" onClick={e => this.loginAttempt(e)}>Login</button>
+                        <button type="button" className="w-50 btn btn-primary" onClick={e => this.props.onLoginAttempt(e)}>Login</button>
                     </div>
                 </form>
             </div>

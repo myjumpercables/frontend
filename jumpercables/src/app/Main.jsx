@@ -3,6 +3,9 @@ import { OfflineView } from './OfflineView';
 import { OnlineView } from './OnlineView';
 import { User } from '../api'
 import { Services } from './Services';
+import { Landing } from './Landing';
+import { PrivateRoute } from '../_components';
+import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 export class Main extends Component {
     user = new User();
@@ -12,10 +15,7 @@ export class Main extends Component {
     }
     
     onSetLogin(loginData) {
-        this.user.login(loginData)
-        .then(()=> {
-            localStorage.setItem('login', "true");
-        })
+        this.setState({ login: true })
     }
 
     onSetLogout() {
@@ -24,7 +24,15 @@ export class Main extends Component {
 
     render() {
         if(true) {
-            return <Services></Services>
+            return (
+                <Router>
+                    <Switch>
+                        <PrivateRoute path="/user/:userid" component={OnlineView}></PrivateRoute>
+                        <Route path="/landing" render={(props) => <Landing {...props} redirect={this.state.redirect} onSetLogin={e => this.onSetLogin(e)}></Landing>}/>
+                        <Redirect to="/landing"/>
+                    </Switch>
+                </Router>
+            )
         }
         return(
             <>

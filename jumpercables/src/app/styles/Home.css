@@ -1,0 +1,16 @@
+#homescreen {
+    background-image: url('./Local-Repair-Shop.jpg');
+}
+
+#background {
+    z-index: -1;
+    position: absolute;   
+}
+
+#jumbo {
+    opacity: .9;
+}
+
+#inner-component {
+    opacity: 1.0;
+}

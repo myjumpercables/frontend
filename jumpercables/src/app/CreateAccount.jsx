@@ -34,15 +34,14 @@ export class CreateAccount extends Component {
     render() {
         return (
         <>
-        <div className="container d-flex justify-content-center mt-2">
+        <div className="container d-flex justify-content-center">
             <div className="flex-column w-100">
                 <div className="d-flex mb-2">
                     <h2 className="m-auto">
                         CREATE AN ACCOUNT
                     </h2>
                 </div>
-
-                <div className="d-flex align-items-center">
+                <div className="d-flex justify-content-center">
                     <form>
                         <div className="form-group">
                             <label htmlFor="NameInput">Name</label>
@@ -68,9 +67,9 @@ export class CreateAccount extends Component {
                             <label htmlFor="BirthdayInput">Birthday</label>
                             <input onChange={e => this.setState({ birthday : e.target.value })} value={this.state.birthday} type="date" className="form-control" id="BirthdayInput" placeholder="Birthday"/>
                         </div>
-                        <div class="form-check">
-                        <input class="form-check-input" type="checkbox" onChange={e => this.setState({ isCompany : mods.handleCheckboxChange(e) })} value={this.state.isCompany} id="companyCheck"/>
-                            <label class="form-check-label" for="companyCheck">
+                        <div className="form-check">
+                        <input className="form-check-input" type="checkbox" onChange={e => this.setState({ isCompany : mods.handleCheckboxChange(e) })} value={this.state.isCompany} id="companyCheck"/>
+                            <label className="form-check-label" htmlFor="companyCheck">
                             This is an organization
                             </label>
                         </div>
