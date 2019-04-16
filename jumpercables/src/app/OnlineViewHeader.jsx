@@ -13,7 +13,7 @@ export const OnlineViewHeader = (props) => {
         </div>
         <div className="col d-flex justify-content-center">
             {(props.userType === "company")? <h3 className="text-center text-white h-100 m-0">{props.username}</h3> :
-            <i class="fas fa-car-side fa-lg p-2"></i>}
+            <i className="fas fa-car-side fa-lg p-2"></i>}
         </div>
         <div className="container col-1 d-flex justify-content-end align-items-center">
             <div className="ml-2 pr-2">
