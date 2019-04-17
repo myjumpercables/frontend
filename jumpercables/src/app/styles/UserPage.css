@@ -1,0 +1,45 @@
+ /* The side navigation menu */
+ #sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    left: -1;
+    background-color: #110011;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    top: 0;
+    padding-top: 5em;
+    opacity: .95;
+  }
+  
+  /* The navigation menu links */
+  #sidenav a, #sidenav button {
+    padding: 1em;
+    padding-bottom: .8em;
+    padding-top: .8em;
+    text-decoration: none;
+    font-size: 1.0em;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    text-align: center
+
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  #sidenav a:hover, #sidenav button:hover {
+    color: #f1f1f1;
+    background: #660066
+  }
+  
+  #sidenav button {
+    background-color: inherit;
+  }
+  /* Position and style the close button (top right corner) */
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (min-width: 650px) {
+    #sidenav a {font-size: 1.5em;}
+    #sidenav a, #sidenav button {padding: 1.2em}
+  }

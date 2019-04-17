@@ -6,14 +6,14 @@ export const ServiceList = (props) => (
     <div className="services container">
         {
             props.services.map((s, i) => (
-                <div className="card border mb-3">
+                <div className="card border mb-3" key={i}>
                     <div className="card-header d-flex justify-content-between">
                         <div className="text-left">
                             {s.date}
                         </div>
                         <div className="d-flex">
-                            <button className="btn btn-dark" key={i}> 
-                            <i class="fa fa-edit " ></i>
+                            <button className="btn btn-dark"> 
+                            <i className="fa fa-edit " ></i>
                             </button>
                         </div>
                     </div>
