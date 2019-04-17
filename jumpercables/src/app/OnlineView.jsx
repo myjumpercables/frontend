@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './styles/OnlineView.css'
 import { OnlineViewHeader } from './OnlineViewHeader';
 import { CompanyView } from './CompanyView';
-import { UserView } from './UserView';
 import { UserPage } from './UserPage';
 
 import { Route } from 'react-router-dom';

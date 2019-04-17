@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Car } from "./../models/Car";
 import { Repair } from "../models/Repair";
 
-export class RepairForm extends React.Component {
+export class RepairForm extends Component {
     state = {
         model: "",
         make: "",

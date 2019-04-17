@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as  Route, Link, Switch } from 'react-router-dom';
 import { NAVROUTES } from '../routes'
 import './styles/UserPage.css'
-import { Services } from './Services'
-import { Main } from './Main';
-import { User } from '../api';
+
 
 export class UserPage extends Component {
     constructor() {
@@ -62,7 +60,7 @@ export class UserPage extends Component {
             <div>
                 <Switch>
                 {
-                    this.navroutes.filter(routes => (routes.component == true)).map(x => <Route key={x.path} path={x.path} component={x.component}></Route> )
+                    this.navroutes.filter(route => (!route.component === undefined)).map(x => <Route key={x.path} path={x.path} component={x.component}></Route> )
                 }
                 </Switch>
             </div>
