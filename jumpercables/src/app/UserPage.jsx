@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as  Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import { NAVROUTES } from '../routes'
 import './styles/UserPage.css'
 
@@ -60,7 +60,7 @@ export class UserPage extends Component {
             <div>
                 <Switch>
                 {
-                    this.navroutes.filter(route => (!route.component === undefined)).map(x => <Route key={x.path} path={x.path} component={x.component}></Route> )
+                    this.navroutes.map((x) => <Route key={x.path} path={x.path} component={x.component}/> )
                 }
                 </Switch>
             </div>
