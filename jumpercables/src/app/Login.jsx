@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './styles/Login.css';
-import { User } from '../api';
 
 export class Login extends Component {
 
