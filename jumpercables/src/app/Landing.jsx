@@ -4,14 +4,14 @@ import { Login } from './Login';
 import { CreateAccount } from './CreateAccount'
 import { Home } from './Home';
 import logo from './styles/Local-Repair-Shop.jpg'
-import { User } from '../api';
+import { userRespository } from '../api';
 
 export class Landing extends Component {
     
     state = {
         redirect: "/",
     }
-    user = new User();
+    user = new userRespository();
 
     componentWillMount() {
         this.user.logout();
@@ -21,8 +21,7 @@ export class Landing extends Component {
         this.user.login({username: username, password: password})
         .then(
             user => {
-                const { from } = this.props.location.state || { from: {pathname: `/user/${user.id}` } };
-                console.log(user.id);
+                const { from } = this.props.location.state || { from: {pathname: `/${user.type}/home` } };
                 this.props.history.push(from);
             }
         );

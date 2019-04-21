@@ -7,14 +7,13 @@ export const OnlineViewHeader = (props) => {
         <header className="row bg-dark pt-2 pb-2">
         <div className="container col-1 d-flex justify-content-start align-items-center">
             <div className="pr-4 mr-2">
-            <button className="btn btn-link btn-primary" onClick={e => props.toggleNavbarState()}>
-                {!props.navbarState && <i id="nav-fa" className="fa fa-bars fa-lg"></i>}
-                {props.navbarState && <i id="nav-fa" className="fa fa-bars fa-md"></i>}
+            <button className="btn btn-link" onClick={e => props.toggleNavbarState()}>
+                 <i id="nav-fa" className="fa fa-bars fa-lg"></i>
             </button>
             </div>
         </div>
         <div className="col d-flex justify-content-center">
-            {(props.userType === "company")? <h3 className="text-center text-white h-100 m-0">{props.username}</h3> :
+            {(props.type === "company") ? <h3 className="text-center text-white h-100 m-0">{props.username}</h3> :
             <i className="fas fa-car-side fa-2x p-2"></i>}
         </div>
         <div className="container col-1 d-flex justify-content-end align-items-center">

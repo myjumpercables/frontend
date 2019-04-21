@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import './styles/Login.css';
-import { User } from '../api';
 
 export class Login extends Component {
-    user = new User();
 
     state={
         loginUser: "",
@@ -12,10 +10,6 @@ export class Login extends Component {
     
     loginAttempt(e) {
         this.props.onLoginAttempt(this.state.username, this.state.password);
-    }
-
-    componentWillMount() {
-        this.user.logout();
     }
 
     isValidForm() {

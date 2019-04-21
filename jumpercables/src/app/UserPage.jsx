@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
-import { NAVROUTES } from '../routes'
+import { Route, Link} from 'react-router-dom';
+import { OnlineViewHeader } from './OnlineViewHeader'
+import { userRoutes, companyRoutes} from '../routes'
 import './styles/UserPage.css'
 
 
 export class UserPage extends Component {
-    constructor() {
-        super()
-        let user = JSON.parse(localStorage.getItem('user'));
 
-        this.state = {
-            localPath: `/user/${user.id}`,
-        }
-        console.log(user)
-        this.navroutes = new NAVROUTES(`/user/${user.id}`);
-    }
+    navroutes = (this.props.type === "company") ? new companyRoutes() :  new userRoutes(); 
 
     getControls() {
         return {
@@ -26,10 +19,14 @@ export class UserPage extends Component {
         let controls = this.getControls();
         controls.sidenav.style.width = "100%";
     }
-    closeNav() {
+
+    closeNav(e) {
+        console.log()
         let controls = this.getControls();
         controls.sidenav.style.width = 0;
+        return true;
     }
+
     componentDidUpdate() {
         if(this.props.navbarState) {
             this.openNav();
@@ -41,29 +38,34 @@ export class UserPage extends Component {
     render() {
         return (
             <div>
-            <aside>
-                <div id="sidenav" className="sidenav">
-                <div className="w-100">
-                    <button 
-                        className="btn btn-link rounded-0 w-100 text-center font-weight-bold" 
-                        onClick={e => this.props.toggleNavbarState(e)}>
-                        CLOSE MENU
-                        </button>
+                <div>
+                    <OnlineViewHeader 
+                    type={this.props.type} 
+                    username={this.props.username} 
+                    toggleNavbarState={e => this.props.toggleNavbarState()}>
+                    </OnlineViewHeader>
                 </div>
+                <aside>
+                    <div id="sidenav" style={{zIndex:100}} className="sidenav">
+                    <div className="w-100">
+                        <button 
+                            className="btn btn-link rounded-0 w-100 text-center font-weight-bold" 
+                            onClick={e => this.props.toggleNavbarState(e)}>
+                            CLOSE MENU
+                        </button>
+                        {
+                            this.navroutes.filter(x => !(x.nolink === true)).map(x => 
+                                <Link key={x.path} onClick={(e) => this.props.toggleNavbarState(e)} to={x.path}>{x.text}</Link>
+                            )
+                        }
+                    </div>
+                    </div>
+                </aside>
+                <div>
                     {
-                        this.navroutes.map(x => 
-                            <Link key={x.path} to={x.path}>{x.text}</Link>
-                        )
+                        this.navroutes.map(x => <Route key={x.path} path={x.path} component={x.component}></Route> )
                     }
                 </div>
-            </aside>
-            <div>
-                <Switch>
-                {
-                    this.navroutes.map((x) => <Route key={x.path} path={x.path} component={x.component}/> )
-                }
-                </Switch>
-            </div>
             </div>
         )
     }

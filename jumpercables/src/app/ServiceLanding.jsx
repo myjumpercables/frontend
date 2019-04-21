@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { ServiceEditor } from './ServiceEditor'
 
 export class ServiceLanding extends Component {
-    render(){
+    state = {
+
+    }
+    render() {
         return (
-            <>
-            </>
-        )
+                <ServiceEditor></ServiceEditor>
+        );
     }
 }
