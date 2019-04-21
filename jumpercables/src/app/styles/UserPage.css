@@ -11,6 +11,7 @@
     top: 0;
     padding-top: 5em;
     opacity: .95;
+    overflow: hidden;
   }
   
   /* The navigation menu links */

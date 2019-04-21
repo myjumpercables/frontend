@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class CompanyViewSearch extends Component {
+export class CompanySearch extends Component {
     state = {
         // switching false searches by id
         searchByType: true,
@@ -28,10 +28,10 @@ export class CompanyViewSearch extends Component {
         return(
             <div className="container mt-2">
                 <div className="input-group">
-                    <div className="input-group-prepend">
+                    <div className="input-group-prepend" style={{zIndex: 1}}>
                     <button 
-                        name="searchButton" 
-                        id="searchButton" 
+                        name="searchType" 
+                        id="searchType" 
                         className="btn btn-secondary input-group-text" 
                         onClick={e => this.searchToggle(e)}
                     >

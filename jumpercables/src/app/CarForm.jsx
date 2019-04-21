@@ -24,17 +24,17 @@ export class CarForm extends React.Component {
   render() {
     return (
       <>
-        <div className="container m-4" style={{ width: 1200 }}>
+        <div className="container">
           <div className="card">
             <div className="card-header bg-secondary text-light font-weight-bold">
-              Add a car
+              Car Form
             </div>
             <div className=" card-body">
               <form>
                 <div className="row">
-                  <div className="col-sm-7">
+                  <div className="col">
                     <div className="form-group">
-                      <label htmlFor="model">model</label>
+                      <label htmlFor="model">Model</label>
                       <input
                         type="text"
                         id="model"
@@ -47,9 +47,9 @@ export class CarForm extends React.Component {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-sm-7">
+                  <div className="col">
                     <div className="form-group">
-                      <label htmlFor="make">make</label>
+                      <label htmlFor="make">Make</label>
                       <input
                         type="text"
                         id="make"
@@ -63,9 +63,9 @@ export class CarForm extends React.Component {
                 </div>
 
                 <div className="row">
-                  <div className="col-sm-7">
+                  <div className="col">
                     <div className="form-group">
-                      <label htmlFor="year">year</label>
+                      <label htmlFor="year">Year</label>
                       <input
                         type="text"
                         id="year"

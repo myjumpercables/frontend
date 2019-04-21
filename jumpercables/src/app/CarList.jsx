@@ -1,12 +1,11 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 
-class CarList extends Component {
-  render() {
-    const { length: count } = this.props.cars;
+const CarList = (props) => {
 
-    if (count === 0)
+    if (!props.cars.length)
       return (
-        <div className="container m-4" style={{ width: 1200 }}>
+        <div className="container rounded mt-1 mb-1">
           <div
             className="navbar navbar-light"
             style={{ backgroundColor: " #f2f2f2" }}
@@ -15,47 +14,36 @@ class CarList extends Component {
           </div>
         </div>
       );
-
-    return (
-      this.props.cars.length > 0 &&
-      this.props.cars.map((a, i) => {
-        return (
-          <div className="container m-4" style={{ width: 1200 }}>
-            <div className="card" key={i}>
-              <div
-                className="card-header font-weight-bold text-light"
-                style={{ backgroundColor: "blue" }}
-              >
-                <h3>Car {this.props.cars.length}</h3>
-              </div>
-              <div className="card-body bg-light">
-                <div className="row">
-                  <div className="col">
-                    <h2 className="text-muted font-weight-bold">
-                      Model: {a.model}
-                    </h2>
-                  </div>
-                </div>
-                <hr />
-                <div className="row m-2 text-muted font-weight-bold">
-                  <h3 className="text-muted font-weight-bold">
-                    Make: {a.make}
-                  </h3>
-                </div>
-                <hr />
-                <div className="row m-2 text-muted font-weight-bold">
-                  <h3 className="text-muted font-weight-bold">
-                    Year: {a.year}
-                  </h3>
-                </div>
-              </div>
-            </div>
-            <br />
-          </div>
-        );
-      })
-    );
-  }
+      return (
+        <div className="container rounded">
+        {console.log(props.cars)}
+          <table className="table table-condensed table-hover mt-1 mt-1">
+            <thead className="thead-dark">
+              <tr>
+                <th className="col-4">Make</th>
+                <th className="col-4">Model</th>
+                <th className="col-4">Year</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {
+              props.cars.map((car,i) => 
+              <tr key={i}>
+                <td>{car.model}</td>
+                <td>{car.make}</td>
+                <td>{car.year}</td>
+                <td>
+                  <Link to={`/user/services/${i}`} className="btn btn-success rounded-0">Add Service</Link>
+                </td>
+              </tr>
+              )
+            }
+            </tbody>
+      
+          </table>
+        </div>
+      )
 }
 
 export default CarList;

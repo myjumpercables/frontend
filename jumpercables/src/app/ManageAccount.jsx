@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles/AccountView.css';
-import util from '../utils/mods.jsx';
+import util from '../utils/mods';
 
-const AccountView = (props) => {
+export const ManageAccount = (props) => {
     return (
         <>
         {/*EU Modal Start*/}
@@ -203,4 +203,4 @@ const clearManagePasswordModal = (e) => {
         controls[key].value = "";
     }
 }
-export default AccountView;
+export default ManageAccount;

@@ -1,1 +1,1 @@
-export * from './userpage';
+export * from './routes';
