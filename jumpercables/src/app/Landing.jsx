@@ -13,10 +13,6 @@ export class Landing extends Component {
     }
     user = new userRespository();
 
-    componentWillMount() {
-        this.user.logout();
-    }
-
     onLoginAttempt(username, password) {
         this.user.login({username: username, password: password})
         .then(

@@ -3,6 +3,7 @@ import { RepairLanding } from '../app/RepairLanding'
 import { ServiceLanding } from '../app/ServiceLanding'
 import { ManageAccount } from '../app/ManageAccount'
 import { CompanySearch } from '../app/CompanySearch'
+import { ServiceForm } from '../app/ServiceForm'
 
 const userRoutes = (path ="/user") => {
     return [
@@ -38,7 +39,19 @@ const userRoutes = (path ="/user") => {
             path: `${path}/services`,
             component: ServiceLanding,
             nolink: true
-        }
+        },
+
+        {
+            path: `${path}/addservices`,
+            component: ServiceForm,
+            nolink: true
+        },
+
+        {
+            path: `${path}/addcar`,
+            component: ServiceForm,
+            nolink: true
+        },
     ]
 }
 

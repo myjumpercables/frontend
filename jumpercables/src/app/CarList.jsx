@@ -52,9 +52,15 @@ const CarList = (props) => {
               </div>
             )}
             <div className="card-header d-flex justify-content-center">
-            <button className="btn btn-info collapsed w-100">
+            <Link to={{
+                  pathname:`/user/addservices/${i}`,
+                  state:{
+                    carName: `${car.year} ${car.make} ${car.model}`,
+                    redirect: "/user/cars"
+                  } 
+                  }} className="btn btn-info collapsed w-100">
               ADD A NEW SERVICE
-            </button>
+            </Link>
             </div>    
             </div>
           </div>
