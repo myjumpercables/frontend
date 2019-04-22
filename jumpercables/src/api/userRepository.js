@@ -9,23 +9,23 @@ export class userRespository {
     };
 
     login(loginData) {
-        // return new Promise((resolve, reject) => {
-        //     let user = {username: "Joe's Repair", id: "abc123", type : "user"}
-        //     localStorage.setItem('user', JSON.stringify(user))
-        //     resolve(user);
-        // })
+        return new Promise((resolve, reject) => {
+            let user = {username: "Joe's Repair", id: "abc123", type : "user"}
+            localStorage.setItem('user', JSON.stringify(user))
+            resolve(user);
+        })
         // return new Promise((resolve, reject) => {
         //     axios.post(`${this.url}/login`, {username: loginData.username, password: loginData.password}, this.config)
         //     .then(resp => resolve(resp.data))
         //     .catch(resp => alert(resp));
         // })
-        return new Promise((resolve, reject) => {
-            let user = {username: "Joe's Repair", id: "abc123", type : "user"}
-            localStorage.setItem('user', JSON.stringify(user))
-            axios.get(`${this.url}/`, this.config)
-            .then(resp => resolve(user))
-            .catch(resp => alert(resp));
-        })
+        // return new Promise((resolve, reject) => {
+        //     let user = {username: "Joe's Repair", id: "abc123", type : "user"}
+        //     localStorage.setItem('user', JSON.stringify(user))
+        //     axios.get(`${this.url}/`, this.config)
+        //     .then(resp => resolve(user))
+        //     .catch(resp => alert(resp));
+        // })
 
     }
 
