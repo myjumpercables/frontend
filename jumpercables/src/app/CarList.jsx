@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-
+import './styles/CarList.css'
 const CarList = (props) => {
 
     if (!props.cars.length)
@@ -14,34 +14,72 @@ const CarList = (props) => {
           </div>
         </div>
       );
-      return (
-        <div className="container rounded">
-        {console.log(props.cars)}
-          <table className="table table-condensed table-hover mt-1 mt-1">
-            <thead className="thead-dark">
-              <tr>
-                <th className="col-4">Make</th>
-                <th className="col-4">Model</th>
-                <th className="col-4">Year</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-            {
-              props.cars.map((car,i) => 
-              <tr key={i}>
-                <td>{car.model}</td>
-                <td>{car.make}</td>
-                <td>{car.year}</td>
-                <td>
-                  <Link to={`/user/services/${i}`} className="btn btn-success rounded-0">Add Service</Link>
-                </td>
-              </tr>
-              )
-            }
-            </tbody>
-      
-          </table>
+      return (     
+        <div className="container mt-2">
+        <div className="row">
+        { props.cars.map((car, i) =>
+          <div className="col-lg-4 mt-2 mb-2" key={i}>
+          <div className="card bg-light">
+            <div className="card-header">
+                <h3>Make: {car.make}</h3>
+                <h3>Model: {car.model}</h3>
+                <h3>Year: {car.year}</h3>
+            </div>
+            <div id="card-accordion">
+            { !!car.services.length && car.services.map((service, j) =>
+              <div className="card" key={j}>
+                <div className="card-header">
+                <button 
+                className="btn btn-warning collapsed w-100 text-left text-truncate"  
+                data-toggle="collapse" 
+                data-target={`#${i}${j}`}>
+                 <strong> Service: </strong> {service.subject}
+                </button>
+                </div>
+                <div 
+                  id={`${i}${j}`} 
+                  className="collapse"
+                  aria-labelledby={`heading${j}`}
+                  data-parent="#card-accordion">
+                  <div className="card-body">
+                    {service.text}
+                  </div>
+                  <div className="card-footer text-muted">
+                    {service.date}
+                  </div>
+                </div>
+              </div>
+            )}
+            <div className="card-header d-flex justify-content-center">
+            <Link to={{
+                  pathname:`/user/addservices/${i}`,
+                  state:{
+                    carName: `${car.year} ${car.make} ${car.model}`,
+                    redirect: "/user/cars"
+                  } 
+                  }} className="btn btn-info collapsed w-100">
+              ADD A NEW SERVICE
+            </Link>
+            </div>    
+            </div>
+          </div>
+          </div>)
+        }
+        <div className="col-lg-4 mt-2 mb-2">
+            <Link 
+            id="car-fa"
+            className="btn btn-secondary container text-black card h-100 bg-light d-flex flex-column justify-content-center align-middle" 
+            to={{
+              pathname:"/user/addcar",
+              state: {
+                redirect: "/user/cars"
+              }
+            }}>
+            <i id="car-fa" class="fas fa-plus fa-6x"></i>
+              ADD CAR
+            </Link>
+        </div>
+        </div>
         </div>
       )
 }

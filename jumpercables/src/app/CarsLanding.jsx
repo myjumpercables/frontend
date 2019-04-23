@@ -4,10 +4,10 @@ import { CarForm } from './CarForm';
 import CarList from './CarList';
 import { Link } from 'react-router-dom';
 import './styles/CarsLanding.css'
+import { Car } from '../models/Car';
 export class CarsLanding extends Component{
-    state ={ 
-        cars: [],
-        editMode: false,
+    state = { 
+        cars: [ new Car(undefined, "Pontiac", "Axtec", "2005")],
     }
     
     onNew(car) {
@@ -36,7 +36,7 @@ export class CarsLanding extends Component{
                 <div className="container">
                 <div className="row container mt-2 mb-2">
                     <Link 
-                        className="btn btn-secondary" 
+                        className="btn btn-secondary btn-block" 
                         to={{
                             pathname:"/user/addcar",
                             state: {

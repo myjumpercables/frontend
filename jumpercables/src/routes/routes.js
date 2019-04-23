@@ -20,12 +20,6 @@ const userRoutes = (path ="/user") => {
         },
         
         { 
-            path: `${path}/repairs`,
-            text: "View Repairs & Services",
-            component: RepairLanding
-        },
-        
-        { 
             path: `${path}/manageaccount`,
             text: "Manage Your Account",
             component: ManageAccount
