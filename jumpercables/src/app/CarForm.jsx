@@ -1,34 +1,50 @@
 import React, { Component } from "react";
 import { Car } from "./../models/Car";
+import { Redirect } from 'react-router-dom'
+import { carRepository } from "../api/carRepository";
 
 export class CarForm extends Component {
   state = {
     model: "",
     make: "",
-    year: " "
+    year: "",
+    redirect: "",
+    carFormError: false,
   };
 
-  onSubmit() {
-    this.props.onNew(
-      new Car(undefined, this.state.model, this.state.make, this.state.year)
-    );
+  carRepository = new carRepository();
 
-    // clears the form
-    this.setState({
-      model: "",
-      make: "",
-      year: ""
-    });
+  onSubmit() {
+    if(this.state.make && this.state.year && this.state.model) {
+      let car = new Car(undefined, this.state.model, this.state.make, this.state.year);
+      this.setState({
+        model: "",
+        make: "",
+        year: ""
+      });
+      this.setState ({ redirect: this.props.location.state.redirect});
+    }
+    else {
+      this.setState({ carFormError: true});
+    }
   }
 
   render() {
+    if(this.state.redirect) {
+      return <Redirect to={this.state.redirect}/>
+    }
+
     return (
       <>
-        <div className="container">
-          <div className="card">
-            <div className="card-header bg-secondary text-light font-weight-bold">
+  <div className="container">
+    <div className="card">
+            <div className="card-header mt-3 bg-secondary text-light font-weight-bold">
               Car Form
             </div>
+            {this.state.carFormError && 
+            <div className="container text-danger font-weight-bold">
+              Please fill all forms.
+            </div>}
             <div className=" card-body">
               <form>
                 <div className="row">
@@ -40,6 +56,7 @@ export class CarForm extends Component {
                         id="model"
                         name="model"
                         className="form-control"
+                        placeholder="e.g. Toyota, Honda, Ford"
                         value={this.state.model}
                         onChange={e => this.setState({ model: e.target.value })}
                       />
@@ -55,6 +72,7 @@ export class CarForm extends Component {
                         id="make"
                         name="make"
                         className="form-control"
+                        placeholder="e.g. Corolla, Civic,"
                         value={this.state.make}
                         onChange={e => this.setState({ make: e.target.value })}
                       />
@@ -71,6 +89,7 @@ export class CarForm extends Component {
                         id="year"
                         name="year"
                         className="form-control"
+                        placeholder="e.g. 2003, 2006, 2007"
                         value={this.state.year}
                         onChange={e => this.setState({ year: e.target.value })}
                       />

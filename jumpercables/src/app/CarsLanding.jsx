@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { RepairForm } from './RepairForm';
 import { CarForm } from './CarForm';
 import CarList from './CarList';
+import { Link } from 'react-router-dom';
+import './styles/CarsLanding.css'
 export class CarsLanding extends Component{
     state ={ 
         cars: [],
@@ -31,7 +33,18 @@ export class CarsLanding extends Component{
         return(
             <>
                 <CarList cars={this.state.cars}></CarList>
-                <CarForm onNew={e=> this.onNew(e)}></CarForm>
+                <div className="container">
+                <div className="row container mt-2 mb-2">
+                    <Link 
+                        className="btn btn-secondary" 
+                        to={{
+                            pathname:"/user/addcar",
+                            state: {
+                                redirect: "/user/cars"
+                            }
+                            }}>ADD CAR</Link>
+                </div>
+                </div>
             </>
         )
     }

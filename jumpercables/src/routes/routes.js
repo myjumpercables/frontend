@@ -4,6 +4,7 @@ import { ServiceLanding } from '../app/ServiceLanding'
 import { ManageAccount } from '../app/ManageAccount'
 import { CompanySearch } from '../app/CompanySearch'
 import { ServiceForm } from '../app/ServiceForm'
+import { CarForm } from '../app/CarForm';
 
 const userRoutes = (path ="/user") => {
     return [
@@ -49,7 +50,7 @@ const userRoutes = (path ="/user") => {
 
         {
             path: `${path}/addcar`,
-            component: ServiceForm,
+            component: CarForm,
             nolink: true
         },
     ]
