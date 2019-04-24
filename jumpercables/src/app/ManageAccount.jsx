@@ -1,40 +1,146 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './styles/AccountView.css';
 import util from '../utils/mods';
+import states from '../models/statelist'
 
-export const ManageAccount = (props) => {
+export class ManageAccount extends Component {
+    state = {
+        name: "",
+        email: "",
+        phone: "",
+        state: "",
+        city: "",
+        description: "",
+        changes: false,
+    }
+
+    baseState = this.state;
+
+    switchSelect(e) {
+        this.setState({state: e.target.value})
+    }
+    
+    saveChanges() {
+
+    }
+
+    closeModal() {
+        this.setState(this.baseState);
+    }
+
+    render () {
     return (
         <>
         {/*EU Modal Start*/}
         <div className="modal fade" id="updateEU" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
+            <div className="modal-header text-center flex justify-content-center">
+                <h3>Manage Account</h3>
+            </div>
             <div className="modal-body container">
-                <form className="row justify-content-center">
-                    <div className="form-group">
-                        <strong>
-                            <div id="newEUError" className="error"><br/></div>
-                            <br/>
-                        </strong>
-                        <div id="newEmailError" className="error"><br/></div>
-                        <label htmlFor="newEmail">Enter Your New Email</label>
-                        <div className="mb-2 input-group">
-                            <input type="email" className="form-control" id="newEmail"/>
+                {this.state.changes && <div className="alert alert-info w-100 text-center">
+                    Changes Saved.
+                </div>}
+                <div className="container">
+                <form>
+                    <div className="form-row">
+                        <div className="col-md-6">
+                        <label htmlFor="userForm">Username</label>
+                        <input
+                            className="form-control"
+                            type="text" 
+                            id="userForm"
+                            value={this.state.name}
+                            onChange={e => this.setState({name: e.target.value})}/>
                         </div>
-                        <div id="newUsernameError" className="error"></div>
-                        <label htmlFor="newUsername">Enter Your New Username</label>
-                        <div className="mb-2 input-group">
-                            <input type="text" className="form-control" id="newUsername"/>
+                        <div className="col-md-6">
+                        <label htmlFor="emailForm">Email</label>
+                        <input
+                            className="form-control"
+                            type="text" 
+                            id="emailForm"
+                            value={this.state.email}
+                            onChange={e => this.setState({email: e.target.value})}/>
                         </div>
-                        <div id="passwordCheckError" className="error"></div>
-                        <label htmlFor="passwordCheck">Enter Your Password</label>
-                        <div className="mb-2 input-group" >
-                            <input type="password" className="form-control" id="passwordCheck"/>
+                    </div>
+                    <div className="form-row">
+                        <div className="col">
+                        <label htmlFor="phoneForm">Phone</label>
+                        <input
+                            className="form-control"
+                            type="tel" 
+                            id="phoneForm"
+                            pattern="[\d]{3}-[\d]{3}-[\d]{4}"
+                            value={this.state.phone}
+                            onChange={e => this.setState({phone: e.target.value})}/>
                         </div>
-                        <button type="button" className="mr-2 btn btn-primary" onClick={saveAccountDetails}>Save changes</button>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={clearEUModal}>Close</button>
+                    </div>
+                    <div className="form-row">
+                        <div className="col">
+                        <label htmlFor="text">Describe Yourself</label>
+                        <textarea
+                            className="form-control"
+                            rows="3" 
+                            id="text"
+                            value={this.state.description}
+                            onChange={e => this.setState({description: e.target.value})}/>
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="col-lg-6">
+                        <label htmlFor="state">State</label>
+                        <select className="form-control" onChange={e => this.setState({state: e.target.value})} id="state">
+                            <option key={-1}></option>
+                            {
+                                states.map((state, i) => (
+                                    <option key={i} value={state.abbreviation}>{state.name}</option>
+                                ))
+                            }
+                        </select>
+                        </div>
+                        <div className="col-md">
+                        <label htmlFor="city">City</label>
+                        <input
+                            className="form-control" 
+                            id="city"
+                            value={this.state.city}
+                            onChange={e => this.setState({city: e.target.value})}/>
+                        </div>
                     </div>
                 </form>
+                </div>
+            </div>
+            <div className="modal-footer">
+            <div className="container">
+                <div className="row">
+                    <div className="form-group w-100">
+                        <div className="col">
+                        <label htmlFor="text">Enter Your Current Password</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="text"/>
+                        <small> 
+                            We promise not share your information with anyone!
+                        </small>
+                        </div>
+                    </div>
+                </div>
+                <div className="row justify-content-end">
+                    <button 
+                        className="btn btn-primary col-md-4 m-2"
+                        onClick={() => this.saveChanges()}>
+                        Save Changes
+                    </button>
+                    <button 
+                        className="btn btn-danger col-md-4 m-2"
+                        data-dismiss="modal"
+                        onClick={() => this.closeModal()}>
+                        Close
+                    </button>
+                </div>
+            </div>
             </div>
             </div>
         </div>
@@ -78,16 +184,16 @@ export const ManageAccount = (props) => {
             </div>
             <div className="h-100 w-100 flex justify-content-center container">
                 <form>
-                    <div className="h-100 w-100 btn-group flex-row justify-content-center">
-                        <button className="h-100 m-2 shadow-sm w-100 btn btn-light btn-outline" data-toggle="modal" data-target="#updateEU" onClick={util.skipDefault}>
+                    <div className="row">
+                        <button className=" col h-100 m-2 shadow-sm w-100 btn btn-light btn-outline" data-toggle="modal" data-target="#updateEU" onClick={util.skipDefault}>
                             <div>
-                                <i className="mr-3 ml-3 bg-2 fa fa-user fa-4x"></i>
+                                <i id="fa-manage" className="mr-3 ml-3 bg-2 fa fa-user fa-4x"></i>
                                 <div className="font-weight-bold">Update Username/Email</div>
                             </div>
                         </button>
-                        <button className="h-100 m-2 bg-2h-100 shadow-sm w-100 btn btn-light btn-outline" data-toggle="modal" data-target="#managePassword" onClick={util.skipDefault}>
+                        <button className="col h-100 m-2 bg-2h-100 shadow-sm w-100 btn btn-light btn-outline" data-toggle="modal" data-target="#managePassword" onClick={util.skipDefault}>
                             <div>
-                                <i className="mr-3 ml-3 bg-2 fas fa-lock fa-4x"></i>
+                                <i id="fa-manage" className="mr-3 ml-3 bg-2 fas fa-lock fa-4x"></i>
                                 <div className="font-weight-bold">Manage Password</div>
                             </div>
                         </button>
@@ -97,6 +203,7 @@ export const ManageAccount = (props) => {
         </div>
         </>
     );
+}
 }
 
 

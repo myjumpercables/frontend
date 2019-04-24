@@ -5,6 +5,8 @@ import { ManageAccount } from '../app/ManageAccount'
 import { CompanySearch } from '../app/CompanySearch'
 import { ServiceForm } from '../app/ServiceForm'
 import { CarForm } from '../app/CarForm';
+import { CompanyHome } from '../app/CompanyHome';
+import { RepairForm } from '../app/RepairForm';
 
 const userRoutes = (path ="/user") => {
     return [
@@ -55,12 +57,25 @@ const companyRoutes = (path = "/company") => {
         { 
             path: `${path}/home`,
             text: "Home",
-            component: CompanySearch
+            component: CompanyHome
         },
-
+        
+        { 
+            path: `${path}/manageaccount`,
+            text: "Manage Your Account",
+            component: ManageAccount
+        },
+        
         { 
             path: `/`,
             text: "Logout",
+        },
+
+
+        {
+            path: `${path}/repairs`,
+            component: RepairForm,
+            nolink: true,
         },
     ]
 }

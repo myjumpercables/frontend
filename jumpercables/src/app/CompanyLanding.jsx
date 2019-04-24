@@ -31,7 +31,6 @@ export class CompanyLanding extends Component {
                 type="company"
                 toggleNavbarState={e => this.toggleNavbarState(e)}
                 username={this.state.user.username}></UserPage>}/>
-                <hr/>
             </>
         );
     }
