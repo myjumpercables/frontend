@@ -7,7 +7,7 @@ import { Car } from '../models/Car';
 export class CompanyHome extends Component {
     state = {
         users: [ new User(undefined, "Billy", [new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002")]),  new User(undefined, "Billy", [new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002")])],
-        fromSearch: true,
+        fromSearch: false,
     }
 
     requestAccess() {
