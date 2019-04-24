@@ -7,7 +7,7 @@ import { Car } from '../models/Car';
 export class CompanyHome extends Component {
     state = {
         users: [ new User(undefined, "Billy", [new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002")]),  new User(undefined, "Billy", [new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002")])],
-        fromSearch: false,
+        fromSearch: true,
     }
 
     requestAccess() {
@@ -18,8 +18,10 @@ export class CompanyHome extends Component {
         return (
             <>
                 <CompanySearch></CompanySearch>
-                <hr/>
-                <UserList requestAccess={e => this.requestAccess(e)} fromSearch={this.state.fromSearch} users={this.state.users}></UserList>
+                <UserList 
+                    requestAccess={e => this.requestAccess(e)} 
+                    fromSearch={this.state.fromSearch} 
+                    users={this.state.users}></UserList>
             </>
         )
     }

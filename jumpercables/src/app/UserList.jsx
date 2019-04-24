@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const UserList = (props) => {
-    if(!props.users.length) {
+    if(!props.users.length && !props.fromSearch) {
         return <div className="container">
             <div className="alert alert-secondary">
             You haven't worked with any users yet.
@@ -10,10 +10,10 @@ export const UserList = (props) => {
         </div>
     }
     return <div className="container">
-    <div className="alert">
-
-    </div>
-    <div className="row">
+    {props.fromSearch && <div className=" text-info m-2 mb-0">
+        From Search:
+    </div>}
+    <div className="row mt-2">
     {
         props.users.map((user, i) => 
             <div key={i} className=" col-md-4 mb-3">
