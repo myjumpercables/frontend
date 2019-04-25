@@ -16,7 +16,7 @@ export class ServiceForm extends Component {
     onSubmit() {
         if(this.state.subject && this.state.text) {
             //does external routing
-            console.log(`subject: ${this.state.subject} ; text :${this.state.text} `)
+            console.log(`${this.props.match.params.userId} ${this.state.subject} ${this.state.text}`)
             this.setState({redirect : `${this.props.location.state.redirect}`})
         } else {
             this.setState({ serviceError: true });

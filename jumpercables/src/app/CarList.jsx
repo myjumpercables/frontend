@@ -75,7 +75,7 @@ const CarList = (props) => {
                 redirect: "/user/cars"
               }
             }}>
-            <i id="car-fa" class="fas fa-plus fa-6x"></i>
+            <i id="car-fa" className="fas fa-plus fa-6x"></i>
               ADD CAR
             </Link>
         </div>

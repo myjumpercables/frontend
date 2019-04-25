@@ -39,7 +39,7 @@ const userRoutes = (path ="/user") => {
         },
 
         {
-            path: `${path}/addservices`,
+            path: `${path}/addservices/:userId`,
             component: ServiceForm,
             nolink: true
         },
