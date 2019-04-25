@@ -33,18 +33,6 @@ export class CarsLanding extends Component{
         return(
             <>
                 <CarList cars={this.state.cars}></CarList>
-                <div className="container">
-                <div className="row container mt-2 mb-2">
-                    <Link 
-                        className="btn btn-secondary btn-block" 
-                        to={{
-                            pathname:"/user/addcar",
-                            state: {
-                                redirect: "/user/cars"
-                            }
-                            }}>ADD CAR</Link>
-                </div>
-                </div>
             </>
         )
     }
