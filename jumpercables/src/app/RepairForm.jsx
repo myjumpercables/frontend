@@ -9,7 +9,8 @@ export class RepairForm extends Component {
     year: " ",
     repairType: "",
     repairCost: "",
-    repairDesc: ""
+    repairDesc: "",
+    repairDate: new Date()
   };
 
   onSubmit() {
@@ -18,7 +19,8 @@ export class RepairForm extends Component {
         new Car(undefined, this.state.model, this.state.make, this.state.year),
         this.state.repairType,
         this.state.repairCost,
-        this.state.repairDesc
+        this.state.repairDesc,
+        this.state.repairDate
       )
     );
 
@@ -29,7 +31,8 @@ export class RepairForm extends Component {
       year: "",
       repairType: "",
       repairCost: "",
-      repairDesc: ""
+      repairDesc: "",
+      repairDate: ""
     });
   }
 
@@ -106,6 +109,19 @@ export class RepairForm extends Component {
                     </div>
                   </div>
                 </div>
+                <div className="form-group">
+                  <label htmlFor="repairDate">Repair date</label>
+                  <input
+                    onChange={e =>
+                      this.setState({ repairDate: e.target.value })
+                    }
+                    value={this.state.repairDate}
+                    type="date"
+                    className="form-control"
+                    id="repairDate"
+                    placeholder="repairDate"
+                  />
+                </div>
                 <div className="row">
                   <div className="col">
                     <div className="form-group">
@@ -123,7 +139,6 @@ export class RepairForm extends Component {
                     </div>
                   </div>
                 </div>
-
                 <div className="row">
                   <div className="col">
                     <div className="form-group">

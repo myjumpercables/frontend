@@ -21,6 +21,7 @@ class RepairList extends Component {
                   <h5 style={{ fontWeight: "bold" }}>
                     Repair type: {r.repairType}
                   </h5>
+                  <h6>Date: {r.repairDate}</h6>
                 </h5>
                 <div className="card-body">
                   <h5>Repair description: {r.repairDesc}</h5>
