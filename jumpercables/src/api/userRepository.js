@@ -28,9 +28,16 @@ export class userRespository {
 
     createAccount(account) {
         return new Promise((resolve, reject) => {
-            axios.post(`${this.url}/register`, {username: account.username, password: account.password}, this.config)
-            .then(resp => resolve(resp.data))
-            .catch(resp => alert(resp));
+            let user = {username: "Joe's Repair", id: "abc123", type : "user"}
+            localStorage.setItem('user', JSON.stringify(user))
+            resolve(user);
         })
+        // return new Promise((resolve, reject) => {
+        //     axios.post(`${this.url}/register`, {username: account.username, 
+        //                                         password: account.password,
+        //                                         email: account.email}, this.config)
+        //     .then(resp => resolve(resp.data))
+        //     .catch(resp => alert(resp));
+        // })
     }
 }

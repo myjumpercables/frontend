@@ -14,7 +14,6 @@ export class Landing extends Component {
     user = new userRespository();
 
     onLoginAttempt(username, password) {
-        console.log(username)
         this.user.login({username: username, password: password})
         .then(
             user => {
@@ -25,6 +24,17 @@ export class Landing extends Component {
         // if(this.isValidForm()) {
         //     this.props.onLoginAttempt({username: this.state.loginUser, password: this.state.loginPassword});
         // }
+    }
+
+    onCreateAccount(account) {
+        console.log(account)
+        this.user.createAccount(account)
+        .then(
+            user => {
+                const { from } = this.props.location.state || { from: {pathname: `/${user.type}/home` } };
+                this.props.history.push(from);
+            }
+        )
     }
 
     getRedirect() {
@@ -49,7 +59,10 @@ export class Landing extends Component {
                     <Route
                         path='/login' 
                         render={(props) => <Login {...props} onLoginAttempt={(e, username, password) => this.onLoginAttempt(e, username, password)}></Login>}/>
-                    <Route path='/register' component={CreateAccount} />
+                    <Route 
+                        path='/register' 
+                        render={(props) => <CreateAccount {...props} onCreateAccount={(e, account) => this.onCreateAccount(e, account)}/>}
+                        />
                 </Switch>
                 </div>
             </Router>
