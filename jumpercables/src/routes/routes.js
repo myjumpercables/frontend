@@ -7,6 +7,8 @@ import { ServiceForm } from '../app/ServiceForm'
 import { CarForm } from '../app/CarForm';
 import { CompanyHome } from '../app/CompanyHome';
 import { RepairForm } from '../app/RepairForm';
+import { ServiceRepairView } from '../app/ServiceRepairView';
+
 
 const userRoutes = (path ="/user") => {
     return [
