@@ -5,6 +5,7 @@ import { ManageAccount } from '../app/ManageAccount'
 import { CompanySearch } from '../app/CompanySearch'
 import { ServiceForm } from '../app/ServiceForm'
 import { CarForm } from '../app/CarForm';
+import {ServiceRepairView} from "../app/ServiceRepairView.jsx";
 
 const userRoutes = (path ="/user") => {
     return [
@@ -23,6 +24,12 @@ const userRoutes = (path ="/user") => {
             path: `${path}/manageaccount`,
             text: "Manage Your Account",
             component: ManageAccount
+        },
+
+        {
+            path: `${path}/repairs`,
+            text: "Accept and Deny Repairs",
+            component: ServiceRepairView
         },
 
         { 
@@ -46,7 +53,7 @@ const userRoutes = (path ="/user") => {
             path: `${path}/addcar`,
             component: CarForm,
             nolink: true
-        },
+        }
     ]
 }
 

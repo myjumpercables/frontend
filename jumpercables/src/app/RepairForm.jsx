@@ -39,6 +39,7 @@ export class RepairForm extends Component {
                                 <div className="row">
                                     <div className="col">
                                         <div className="form-group">
+                                            <div id="subjectError" className="error"><br/></div>
                                             <label htmlFor="model">model</label>
                                             <input
                                                 type="text"
@@ -54,6 +55,7 @@ export class RepairForm extends Component {
                                 <div className="row">
                                     <div className="col">
                                         <div className="form-group">
+                                            <div id="makeError" className="error"><br/></div>
                                             <label htmlFor="make">make</label>
                                             <input
                                                 type="text"
@@ -70,6 +72,7 @@ export class RepairForm extends Component {
                                 <div className="row">
                                     <div className="col">
                                         <div className="form-group">
+                                            <div id="yearError" className="error"><br/></div>
                                             <label htmlFor="year">year</label>
                                             <input
                                                 type="text"
@@ -85,6 +88,7 @@ export class RepairForm extends Component {
                                 <div className="row">
                                     <div className="col">
                                         <div className="form-group">
+                                            <div id="typeError" className="error"><br/></div>
                                             <label htmlFor="repairType">Type of Repair</label>
                                             <input
                                                 type="text"
@@ -100,6 +104,7 @@ export class RepairForm extends Component {
                                 <div className="row">
                                     <div className="col">
                                         <div className="form-group">
+                                            <div id="costError" className="error"><br/></div>
                                             <label htmlFor="repairCost">Repair Cost</label>
                                             <input
                                                 type="text"
@@ -116,8 +121,7 @@ export class RepairForm extends Component {
                             <div>
                                 <button
                                     onClick={() => this.onSubmit()}
-                                    className="btn btn-primary"
-                                >
+                                    className="btn btn-primary">
                                     Add
                                 </button>
                             </div>
@@ -128,5 +132,4 @@ export class RepairForm extends Component {
         );
     }
 }
-
 export default RepairForm;

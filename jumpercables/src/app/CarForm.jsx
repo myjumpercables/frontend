@@ -15,6 +15,13 @@ export class CarForm extends Component {
   carRepository = new carRepository();
 
   onSubmit() {
+    if (!this.state.model) {
+      document.getElementById('newModelError').innerHTML = "Please enter a valid model"
+    } else if (!this.state.make) {
+      document.getElementById('newMakeError').innerHTML = "Please enter a valid make"
+    } else if (!this.state.year) {
+      document.getElementById('newYearError').innerHTML = "Please enter a valid year"
+    }
     if(this.state.make && this.state.year && this.state.model) {
       let car = new Car(undefined, this.state.model, this.state.make, this.state.year);
       this.setState({
@@ -41,15 +48,13 @@ export class CarForm extends Component {
             <div className="card-header mt-3 bg-secondary text-light font-weight-bold">
               Car Form
             </div>
-            {this.state.carFormError && 
-            <div className="container text-danger font-weight-bold">
-              Please fill all forms.
-            </div>}
+
             <div className=" card-body">
               <form>
                 <div className="row">
                   <div className="col">
                     <div className="form-group">
+                      <div id="newModelError" className="error"><br/></div>
                       <label htmlFor="model">Model</label>
                       <input
                         type="text"
@@ -66,6 +71,7 @@ export class CarForm extends Component {
                 <div className="row">
                   <div className="col">
                     <div className="form-group">
+                      <div id="newMakeError" className="error"><br/></div>
                       <label htmlFor="make">Make</label>
                       <input
                         type="text"
@@ -83,6 +89,7 @@ export class CarForm extends Component {
                 <div className="row">
                   <div className="col">
                     <div className="form-group">
+                      <div id="newYearError" className="error"><br/></div>
                       <label htmlFor="year">Year</label>
                       <input
                         type="text"
