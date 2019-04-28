@@ -8,8 +8,8 @@ export class Login extends Component {
         loginPassword: "",
     }
     
-    loginAttempt(e) {
-        this.props.onLoginAttempt(this.state.username, this.state.password);
+    loginAttempt() {
+        this.props.onLoginAttempt(this.state.loginUser, this.state.loginPassword);
     }
 
     isValidForm() {
@@ -32,15 +32,24 @@ export class Login extends Component {
                 <form>
                     <div className="mb-2 form-group">
                         <label className="" htmlFor="loginEmail">Username</label>
-                        <input onChange={e => this.setState({ loginUser : e.target.value })} type="email" className="form-control" id="loginEmail" value={this.state.loginUser}/>
+                        <input onChange={e => this.setState({ loginUser : e.target.value })} 
+                        type="email" 
+                        className="form-control" 
+                        id="loginEmail" value={this.state.loginUser}/>
                     </div>
                     <div className="mb-2 form-group">
                         <label className="" htmlFor="loginPassword">Password</label>
                         <input 
-                            onChange={e => this.setState({ loginPassword : e.target.value })} type="password" className="form-control" id="loginPassword" value={this.state.loginPassword}/>
+                            onChange={e => this.setState({ loginPassword : e.target.value })} 
+                            type="password" 
+                            className="form-control" 
+                            id="loginPassword" 
+                            value={this.state.loginPassword}/>
                     </div>
                     <div className="btn-group w-100">
-                        <button type="button" className="w-50 btn btn-primary" onClick={e => this.props.onLoginAttempt(e)}>Login</button>
+                        <button type="button" 
+                            className="w-50 btn btn-primary" 
+                            onClick={() => this.loginAttempt()}>Login</button>
                     </div>
                 </form>
             </div>

@@ -7,8 +7,8 @@ export class CompanySearch extends Component {
         searchValue: "",
     }
 
-    usernameExample = "Username (e.g. Joe Bob)";
-    idExample = "ID (e.g. 1239765)";
+    usernameExample = "(e.g. Joe Bob)";
+    idExample = "(e.g. 1239765)";
 
     searchToggle(e) {
         e.preventDefault();

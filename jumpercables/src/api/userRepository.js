@@ -3,9 +3,6 @@ import axios from 'axios';
 export class userRespository {
     url = "http://34.73.181.113:5000";
     config = {
-        headers: {
-            Authorization: 'user'
-        }
     };
 
     login(loginData) {
@@ -22,7 +19,7 @@ export class userRespository {
         // return new Promise((resolve, reject) => {
         //     let user = {username: "Joe's Repair", id: "abc123", type : "user"}
         //     localStorage.setItem('user', JSON.stringify(user))
-        //     axios.get(`${this.url}/`, this.config)
+        //     axios.post(`${this.url}/login`, loginData, this.config)
         //     .then(resp => resolve(user))
         //     .catch(resp => alert(resp));
         // })

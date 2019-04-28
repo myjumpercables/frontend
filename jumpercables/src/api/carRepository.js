@@ -26,8 +26,7 @@ export class carRepository {
         })
     }
 
-    addServiceToCar(service) {
-        let id = JSON.parse(localStorage.getItem('user')).id;
+    addServiceToCar(id, service) {
         return new Promise((resolve, reject) => {
             axios.post(`${this.url}/services/${id}`, service, this.config)
             .then(resp => resolve(resp.data))

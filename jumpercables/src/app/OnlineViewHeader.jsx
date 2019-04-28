@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 export const OnlineViewHeader = (props) => {
     
@@ -12,15 +13,11 @@ export const OnlineViewHeader = (props) => {
             </button>
             </div>
         </div>
-        <div className="col d-flex justify-content-center">
+        <Link to={`/${props.type}/home`} id="nounderline" className="col d-flex justify-content-center">
             {(props.type === "company") ? <h3 className="text-center text-white h-100 m-0">{props.username}</h3> :
             <i className="fas fa-car-side fa-2x p-2"></i>}
-        </div>
-        <div className="container col-1 d-flex justify-content-end align-items-center">
-            <div className="ml-2 pr-2">
-            <i className="fas fa-wrench fa-lg"/>
-            </div>
-        </div>
+        </Link>
+        <div className="col-1"></div>
         </header>
         </div>
     );

@@ -44,3 +44,7 @@
     #sidenav a {font-size: 1.5em;}
     #sidenav a, #sidenav button {padding: 1.2em}
   }
+
+  #nounderline {
+    text-decoration: none;
+  }

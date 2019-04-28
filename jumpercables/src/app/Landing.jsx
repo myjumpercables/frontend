@@ -14,6 +14,7 @@ export class Landing extends Component {
     user = new userRespository();
 
     onLoginAttempt(username, password) {
+        console.log(username)
         this.user.login({username: username, password: password})
         .then(
             user => {
@@ -47,7 +48,7 @@ export class Landing extends Component {
                     <Route exact path ='/landing' component={Home}/>
                     <Route
                         path='/login' 
-                        render={(props) => <Login {...props} onLoginAttempt={e => this.onLoginAttempt(e)}></Login>}/>
+                        render={(props) => <Login {...props} onLoginAttempt={(e, username, password) => this.onLoginAttempt(e, username, password)}></Login>}/>
                     <Route path='/register' component={CreateAccount} />
                 </Switch>
                 </div>
