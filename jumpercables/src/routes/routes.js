@@ -7,13 +7,14 @@ import { ServiceForm } from '../app/ServiceForm'
 import { CarForm } from '../app/CarForm';
 import { CompanyHome } from '../app/CompanyHome';
 import { RepairForm } from '../app/RepairForm';
+import { UserHome } from '../app/UserHome';
 
 const userRoutes = (path ="/user") => {
     return [
         { 
             path: `${path}/home`,
             text: "Home",
-            component: CarsLanding,
+            component: UserHome,
         },
         { 
             path: `${path}/cars`,

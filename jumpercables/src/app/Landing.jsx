@@ -10,6 +10,8 @@ export class Landing extends Component {
     
     state = {
         redirect: "/",
+        loginError: "",
+        createAccountError: ""
     }
     user = new userRespository();
 
@@ -17,17 +19,18 @@ export class Landing extends Component {
         this.user.login({username: username, password: password})
         .then(
             user => {
-                const { from } = this.props.location.state || { from: {pathname: `/${user.type}/home` } };
+                if(user.error) {
+                    this.setState({loginError: user.error})
+                    return;
+                }
+                localStorage.setItem("user", JSON.stringify(user))
+                const { from } = this.props.location.state || { from: {pathname: `/${user[0].type}/home` } };
                 this.props.history.push(from);
             }
         );
-        // if(this.isValidForm()) {
-        //     this.props.onLoginAttempt({username: this.state.loginUser, password: this.state.loginPassword});
-        // }
     }
 
     onCreateAccount(account) {
-        console.log(account)
         this.user.createAccount(account)
         .then(
             user => {
