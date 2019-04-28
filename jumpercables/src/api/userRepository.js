@@ -7,7 +7,7 @@ export class userRespository {
 
     login(loginData) {
         return new Promise((resolve, reject) => {
-            let user = {username: "Joe's Repair", id: "abc123", type : "company"}
+            let user = {username: "Joe's Repair", id: "abc123", type : "user"}
             localStorage.setItem('user', JSON.stringify(user))
             resolve(user);
         })
