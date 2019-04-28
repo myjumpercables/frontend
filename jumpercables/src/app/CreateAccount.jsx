@@ -15,13 +15,13 @@ export class CreateAccount extends Component {
     registerAccount(e) {
         e.preventDefault();
         if(this.isValidForm()) {
-            this.props.onCreateAccount(new AccountRegister(
-                this.state.name,
-                this.state.email,
-                this.state.password,
-                this.state.re_password,
-                this.state.birthday
-            ));
+            this.props.onCreateAccount({
+                username: this.state.name,
+                email: this.state.email,
+                password: this.state.password,
+                isCompany: this.state.isCompany,
+            }
+            );
         }
     }
 
@@ -62,10 +62,6 @@ export class CreateAccount extends Component {
                         <div className="form-group">
                             <label htmlFor="Re-TypePasswordInput">Re-type your password</label>
                             <input onChange={e => this.setState({ re_password : e.target.value })} value={this.state.re_password} type="password" className="form-control" id="Re-TypePasswordInput" placeholder="Re-type your password"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="BirthdayInput">Birthday</label>
-                            <input onChange={e => this.setState({ birthday : e.target.value })} value={this.state.birthday} type="date" className="form-control" id="BirthdayInput" placeholder="Birthday"/>
                         </div>
                         <div className="form-check">
                         <input className="form-check-input" type="checkbox" onChange={e => this.setState({ isCompany : mods.handleCheckboxChange(e) })} value={this.state.isCompany} id="companyCheck"/>

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export class carRepository {
     url = "http://34.73.181.113:5000";
@@ -20,7 +20,7 @@ export class carRepository {
     addCar(car) {
         let id = JSON.parse(localStorage.getItem('user')).id;
         return new Promise((resolve, reject) => {
-            axios.post(`${this.url}/cars/${id}`, car, this.config)
+            axios.post(`${this.url}/cars/${id}`, JSON.stringify(car), this.config)
             .then(resp => resolve(resp.data))
             .catch(resp => alert(resp));
         })
@@ -28,7 +28,7 @@ export class carRepository {
 
     addServiceToCar(id, service) {
         return new Promise((resolve, reject) => {
-            axios.post(`${this.url}/services/${id}`, service, this.config)
+            axios.post(`${this.url}/services/${id}`, JSON.stringify(service), this.config)
             .then(resp => resolve(resp.data))
             .catch(resp => alert(resp));
         })

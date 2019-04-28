@@ -42,7 +42,7 @@ const CarList = (props) => {
                   aria-labelledby={`heading${j}`}
                   data-parent="#card-accordion">
                   <div className="card-body">
-                    {service.text}
+                    {service.description}
                   </div>
                   <div className="card-footer text-muted">
                     {service.date}

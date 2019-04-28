@@ -1,9 +1,8 @@
 export class Service {
-    constructor(id, subject, text, date = new Date(), repair) {
+    constructor(id, subject, description, date = new Date()) {
         this.id = id;
         this.subject = subject;
-        this.text = text;
+        this.description = description;
         this.date = date;
-        this.repair = repair
     }
 }
