@@ -24,7 +24,7 @@ export class Landing extends Component {
                     return;
                 }
                 localStorage.setItem("user", JSON.stringify(user))
-                const { from } = this.props.location.state || { from: {pathname: `/${user[0].type}/home` } };
+                const { from } = this.props.location.state || { from: {pathname: `/${user.type}/home` } };
                 this.props.history.push(from);
             }
         );
