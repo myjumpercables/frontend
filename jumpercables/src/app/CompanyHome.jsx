@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CompanySearch } from './CompanySearch';
-import { UserList } from './UserList'
+import { UserList } from './CompanyUserList'
 import User from '../models/User'
 import { Car } from '../models/Car';
 

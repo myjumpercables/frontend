@@ -31,7 +31,7 @@ export class UserHome extends Component {
                     <div className="card-footer">
                         <div>
                             <button className="col-md btn btn-info mt-2">
-                                Collect
+                                Connect
                             </button>
                             <button className="col-md btn btn-danger mt-2">
                                 Reject

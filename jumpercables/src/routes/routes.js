@@ -9,6 +9,7 @@ import { CompanyHome } from '../app/CompanyHome';
 import { RepairForm } from '../app/RepairForm';
 import { ServiceRepairView } from '../app/ServiceRepairView';
 import { UserHome } from '../app/UserHome';
+import {CompanyUserView} from "../app/CompanyUserView";
 
 const userRoutes = (path ="/user") => {
     return [
@@ -82,9 +83,17 @@ const companyRoutes = (path = "/company") => {
 
         {
             path: `${path}/repairs`,
+            component: CompanyUserView,
+            nolink: true,
+        },
+
+        {
+            path: `${path}/addRepair`,
             component: RepairForm,
             nolink: true,
         },
+
+
     ]
 }
 
