@@ -7,7 +7,7 @@ export const UserRequests = (props) => (
         <div className="d-flex justify-content-around">
             {
                 props.requests.map((request, i) => (
-                    <div className="col-md-3 border bg-dark"> 
+                    <div className="col-md-3 border bg-dark" key={i}> 
                     <div>
                         <div className="text-white font-italic">{request.companyName} wants to connect!</div>
                         <div className="row">

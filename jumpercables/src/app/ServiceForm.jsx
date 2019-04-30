@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { carRepository } from '../api/carRepository'
+import { serviceRepository } from '../api/serviceRepository'
 import { Redirect } from 'react-router-dom'
 
 export class ServiceForm extends Component {
@@ -11,13 +11,19 @@ export class ServiceForm extends Component {
         redirect: ""
     }
 
-    carRepository = new carRepository();
+    serviceRepository = new serviceRepository()
 
     onSubmit() {
         if(this.state.subject && this.state.text) {
             //does external routing
-            console.log(`${this.props.match.params.userId} ${this.state.subject} ${this.state.text}`)
-            this.setState({redirect : `${this.props.location.state.redirect}`})
+            this.serviceRepository.addService({
+                car_id: this.props.location.state.car_id,
+                service_type: this.state.subject,
+                service_desc: this.state.text,
+                date: new Date(),
+            }).then(good =>{
+                this.setState({redirect : `${this.props.location.state.redirect}`})
+            })
         } else {
             this.setState({ serviceError: true });
         }

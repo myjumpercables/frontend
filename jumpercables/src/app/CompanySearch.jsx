@@ -20,8 +20,7 @@ export class CompanySearch extends Component {
     }
 
     searchUser() {
-        console.log(this.state.searchValue);
-        console.log(this.state.searchByType);
+       this.props.getSearch({query: this.state.searchValue, queryType: this.state.searchByType});
     }
 
     render() {

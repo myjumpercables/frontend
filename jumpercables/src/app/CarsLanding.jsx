@@ -10,14 +10,14 @@ export class CarsLanding extends Component{
     carsRepository = new carRepository();
     
     state = { 
-        cars: [ new Car(undefined, "Pontiac", "Axtec", "2005")],
+        cars: [],
     }
 
     componentDidMount() {
-        // this.carsRepository.getCars()
-        // .then(cars =>{
-        //     console.log(cars);
-        // })
+        this.carsRepository.getCars()
+        .then(cars =>{
+            console.log(this.setState({ cars: cars}));
+        })
     }
 
     setEditMode(e) {

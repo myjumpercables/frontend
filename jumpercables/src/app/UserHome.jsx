@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
-import { userRespository } from '../api/userRepository';
+import { userRepository } from '../api';
 import { Request } from '../models/Request';
-import { Route } from 'react-router-dom'
 import { UserCompanyList } from './UserCompanyList';
 import { UserRequests } from './UserRequests';
 import { Company } from '../models/Company';
-import { request } from 'http';
 
 export class UserHome extends Component {
     state = {
@@ -19,7 +17,7 @@ export class UserHome extends Component {
             new Company(70412, "Nuts & Bolts", "We Break It First", "Austin", "TX"),
         ]
     }
-    user = new userRespository();
+    user = new userRepository();
 
     removeRequest(targetId) {
         this.setState(state => {

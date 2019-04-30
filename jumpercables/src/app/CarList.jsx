@@ -27,13 +27,13 @@ const CarList = (props) => {
             </div>
             <div id="card-accordion">
             { !!car.services.length && car.services.map((service, j) =>
-              <div className="card" key={j}>
+              <div className="card" key={service.service_id}>
                 <div className="card-header">
                 <button 
                 className="btn btn-warning collapsed w-100 text-left text-truncate"  
                 data-toggle="collapse" 
                 data-target={`#${i}${j}`}>
-                 <strong> Service: </strong> {service.subject}
+                 <strong> Service: </strong> {service.service_type}
                 </button>
                 </div>
                 <div 
@@ -42,20 +42,21 @@ const CarList = (props) => {
                   aria-labelledby={`heading${j}`}
                   data-parent="#card-accordion">
                   <div className="card-body">
-                    {service.description}
+                    {service.service_desc}
                   </div>
                   <div className="card-footer text-muted">
-                    {service.date}
+                    {service.service_date}
                   </div>
                 </div>
               </div>
             )}
             <div className="card-header d-flex justify-content-center">
             <Link to={{
-                  pathname:`/user/addservices/${i}`,
+                  pathname:`/user/addservices/${car.car_id}`,
                   state:{
                     carName: `${car.year} ${car.make} ${car.model}`,
-                    redirect: "/user/cars"
+                    redirect: "/user/cars",
+                    car_id: car.car_id,
                   } 
                   }} className="btn btn-info collapsed w-100">
               ADD A NEW SERVICE
@@ -75,7 +76,7 @@ const CarList = (props) => {
                 redirect: "/user/cars"
               }
             }}>
-            <i id="car-fa" className="fas fa-plus fa-6x"></i>
+            <i id="car-fa" className="fas fa-plus fa-6x" style={{ maxHeight: 3 + 'em'}}></i>
               ADD CAR
             </Link>
         </div>

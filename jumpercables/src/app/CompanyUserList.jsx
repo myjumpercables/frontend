@@ -32,7 +32,7 @@ export const UserList = (props) => {
                             }
                         </div>
                         <div className="card-footer">
-                           {user.hasAccess && <Link 
+                           {user.state && <Link 
                                 to={{
                                     pathname: `/company/repairs/${i}` ,
                                     state: {
@@ -40,9 +40,9 @@ export const UserList = (props) => {
                                     }
                                 }} 
                                 className="btn badge-warning btn-block mt-2">View User</Link>}
-                            {!user.hasAccess && <button 
+                            {!user.state && <button 
                             className="btn btn-success btn-block"
-                            onClick={e => props.requestAccess(i)}>
+                            onClick={e => props.requestAccess(user.user_id)}>
                                 Request Access To User
                             </button>}
                         </div>
