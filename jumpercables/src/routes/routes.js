@@ -1,30 +1,30 @@
-import { CarsLanding } from '../app/CarsLanding'
-import { RepairLanding } from '../app/RepairLanding'
-import { ServiceLanding } from '../app/ServiceLanding'
-import { ManageAccount } from '../app/ManageAccount'
-import { CompanySearch } from '../app/CompanySearch'
-import { ServiceForm } from '../app/ServiceForm'
-import { CarForm } from '../app/CarForm';
-import { CompanyHome } from '../app/CompanyHome';
-import { RepairForm } from '../app/RepairForm';
-import { ServiceRepairView } from '../app/ServiceRepairView';
-import { UserHome } from '../app/UserHome';
+import {CarsLanding} from '../app/CarsLanding'
+import {RepairLanding} from '../app/RepairLanding'
+import {ServiceLanding} from '../app/ServiceLanding'
+import {ManageAccount} from '../app/ManageAccount'
+import {CompanySearch} from '../app/CompanySearch'
+import {ServiceForm} from '../app/ServiceForm'
+import {CarForm} from '../app/CarForm';
+import {CompanyHome} from '../app/CompanyHome';
+import {RepairForm} from '../app/RepairForm';
+import {ServiceRepairView} from '../app/ServiceRepairView';
+import {UserHome} from '../app/UserHome';
 import {CompanyUserView} from "../app/CompanyUserView";
 
-const userRoutes = (path ="/user") => {
+const userRoutes = (path = "/user") => {
     return [
-        { 
+        {
             path: `${path}/home`,
             text: "Home",
             component: UserHome,
         },
-        { 
+        {
             path: `${path}/cars`,
             text: "Your Cars",
             component: CarsLanding
         },
-        
-        { 
+
+        {
             path: `${path}/manageaccount`,
             text: "Manage Your Account",
             component: ManageAccount
@@ -36,7 +36,7 @@ const userRoutes = (path ="/user") => {
             component: ServiceRepairView
         },
 
-        { 
+        {
             path: `/`,
             text: "Logout",
         },
@@ -63,19 +63,19 @@ const userRoutes = (path ="/user") => {
 
 const companyRoutes = (path = "/company") => {
     return [
-        { 
+        {
             path: `${path}/home`,
             text: "Home",
             component: CompanyHome
         },
-        
-        { 
+
+        {
             path: `${path}/manageaccount`,
             text: "Manage Your Account",
             component: ManageAccount
         },
-        
-        { 
+
+        {
             path: `/`,
             text: "Logout",
         },
