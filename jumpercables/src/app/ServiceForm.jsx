@@ -14,7 +14,6 @@ export class ServiceForm extends Component {
     serviceRepository = new serviceRepository()
 
     onSubmit() {
-<<<<<<< HEAD
         if(this.state.subject && this.state.text) {
             //does external routing
             this.serviceRepository.addService({
@@ -25,14 +24,6 @@ export class ServiceForm extends Component {
             }).then(good =>{
                 this.setState({redirect : `${this.props.location.state.redirect}`})
             })
-=======
-        if (!this.state.subject && !this.state.text) {
-            document.getElementById('bothFieldError').innerHTML = "Please enter text for both fields"
-        } else if (!this.state.subject) {
-            document.getElementById('subjectError').innerHTML = "Please enter a subject"
-        } else if (!this.state.text) {
-            document.getElementById('textError').innerHTML = "Please enter text to describe your problem"
->>>>>>> bfe0894e1ffed23d354712875af1c2e042e764d7
         } else {
             console.log(`subject: ${this.state.subject} ; text :${this.state.text} `)
             this.setState({redirect : `${this.props.location.state.redirect}`})
