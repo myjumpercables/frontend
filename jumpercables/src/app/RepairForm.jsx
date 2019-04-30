@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Car } from "./../models/Car";
 import { Repair } from "../models/Repair";
 
 export class RepairForm extends Component {
@@ -12,13 +11,7 @@ export class RepairForm extends Component {
 
   onSubmit() {
     this.props.onNew(
-      new Repair(
-        new Car(undefined, this.state.model, this.state.make, this.state.year),
-        this.state.repairType,
-        this.state.repairCost,
-        this.state.repairDesc,
-        this.state.repairDate
-      )
+        new Repair(this.state.repairType, this.state.repairCost, this.state.repairDesc, this.state.repairDate)
     );
 
     // clears the form
