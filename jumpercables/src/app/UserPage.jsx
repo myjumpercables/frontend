@@ -21,7 +21,6 @@ export class UserPage extends Component {
     }
 
     closeNav(e) {
-        console.log()
         let controls = this.getControls();
         controls.sidenav.style.width = 0;
         return true;

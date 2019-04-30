@@ -17,15 +17,18 @@ export class CarForm extends Component {
   onSubmit() {
     if(this.state.make && this.state.year && this.state.model) {
       let car = new Car(undefined, this.state.model, this.state.make, this.state.year);
-      this.setState({
-        model: "",
-        make: "",
-        year: ""
-      });
-      this.setState ({ redirect: this.props.location.state.redirect});
-    }
-    else {
-      this.setState({ carFormError: true});
+      this.carRepository.addCar(car)
+      .then(()=>{
+        this.setState({
+          model: "",
+          make: "",
+          year: ""
+        });
+        this.setState ({ redirect: this.props.location.state.redirect});
+      })
+      .catch(err =>{
+          this.setState({ carFormError: true});
+      })
     }
   }
 

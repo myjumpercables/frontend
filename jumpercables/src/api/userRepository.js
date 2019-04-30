@@ -12,11 +12,6 @@ export class userRespository {
             resolve(user);
         })
         // return new Promise((resolve, reject) => {
-        //     axios.post(`${this.url}/login`, {username: loginData.username, password: loginData.password}, this.config)
-        //     .then(resp => resolve(resp.data))
-        //     .catch(resp => alert(resp));
-        // })
-        // return new Promise((resolve, reject) => {
         //     axios.post(`${this.url}/login`, loginData, this.config)
         //     .then(resp => {
         //         console.log(resp)
@@ -55,6 +50,15 @@ export class userRespository {
         })
     }
 
+    changePassword(oldPassword, newPassword) {
+        let id = JSON.parse(localStorage.getItem('user')).id;
+        return new Promise((resolve, reject) => {
+            axios.post(`${this.url}/users/changePassword`)
+            .then(resp => {resolve(resp.data)})
+            .catch(resp => alert(resp))
+        })
+    }
+
     getRequests(account) {
         let id = JSON.parse(localStorage.getItem('user')).id;
         return new Promise((resolve, reject) =>{
@@ -66,9 +70,14 @@ export class userRespository {
 
     acceptRequest(requestId) {
         return new Promise((resolve, reject) =>{
-            axios.post(`${this.url}/manageaccount/${requestId}`, this.config)
+            axios.post(`${this.url}/requests/add/${requestId}`, this.config)
             .then(resp => {resolve(resp)})
             .catch(resp => alert(resp))
+        })
+    }
+
+    rejectRequest(requestId) {
+        return new Promise((resolve, reject) =>{
         })
     }
 }
