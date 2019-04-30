@@ -1,12 +1,44 @@
 import React, {Component} from 'react'
+import { userRespository } from '../api/userRepository';
+import { Request } from '../models/Request';
+import { Route } from 'react-router-dom'
+import { UserCompanyList } from './UserCompanyList';
+import { UserRequests } from './UserRequests';
+import { Company } from '../models/Company';
+import { request } from 'http';
 
 export class UserHome extends Component {
     state = {
-        requests: [{}],
-        companies: []
+        requests: [
+            new Request(210, "Joe's Repair", 12932), 
+            new Request(4010, "Madeline's", 932193),
+            new Request(999, "Prep", 23103102)],
+        companies: [
+            new Company(2103, "Patty's Tire Mill", "Good Ass Tires", "Dallas", "TX"),
+            new Company(4501, "Repair Goons", "We Fix It", "Richardson", "TX"),
+            new Company(70412, "Nuts & Bolts", "We Break It First", "Austin", "TX"),
+        ]
     }
+    user = new userRespository();
+
+    removeRequest(targetId) {
+        this.setState(state => {
+            return {requests: state.requests.filter((request) => request.id !== targetId)}
+        })
+    }
+
+    acceptCompany(requestId, i) {
+        console.log(requestId);
+        this.removeRequest(requestId);
+    }
+
+    rejectCompany(requestId, i) {
+        console.log(requestId);
+        this.removeRequest(requestId);
+    }
+
     render() {
-        if(!this.state.requests.length && !this.state.requests.length) {
+        if(!this.state.requests.length && !this.state.companies.length) {
             return (
                 <div className="container p-5 bg-light rounded mt-5 text-center text-muted">
                     <h2>
@@ -19,33 +51,12 @@ export class UserHome extends Component {
         }
         return(
             <div className="container mt-2">
-            <div className="container">
-            <div className="col-md-4">
-                <div className="card">
-                    <div className="card-body d-flex justify-content-center">
-                        <h2>
-                        <div className=" font-italic">Joe's Car Shop&#160;</div>
-                        <div>wants to connect!</div>
-                        </h2>
-                    </div>
-                    <div className="card-footer">
-                        <div>
-                            <button className="col-md btn btn-info mt-2">
-                                Connect
-                            </button>
-                            <button className="col-md btn btn-danger mt-2">
-                                Reject
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <hr/>
-                <div className="container">
-                    <h2>YOUR COMPANIES</h2>
-                </div>
+            {!!this.state.requests.length && <UserRequests 
+                                                requests={this.state.requests}
+                                                acceptCompany={(e) => this.acceptCompany(e)}
+                                                rejectCompany={(e) => this.rejectCompany(e)}></UserRequests>}
+            {!!this.state.companies.length && <UserCompanyList companies={this.state.companies}/>}
             </div>
         )
     }
-}
+};;

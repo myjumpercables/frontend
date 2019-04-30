@@ -34,6 +34,7 @@ export class Landing extends Component {
         this.user.createAccount(account)
         .then(
             user => {
+                console.log(user)
                 const { from } = this.props.location.state || { from: {pathname: `/${user.type}/home` } };
                 this.props.history.push(from);
             }
