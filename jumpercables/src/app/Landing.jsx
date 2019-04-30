@@ -4,7 +4,7 @@ import { Login } from './Login';
 import { CreateAccount } from './CreateAccount'
 import { Home } from './Home';
 import logo from './styles/Local-Repair-Shop.jpg'
-import { userRespository } from '../api';
+import { userRepository } from '../api';
 
 export class Landing extends Component {
     
@@ -13,7 +13,7 @@ export class Landing extends Component {
         loginError: "",
         createAccountError: ""
     }
-    user = new userRespository();
+    user = new userRepository();
 
     onLoginAttempt(username, password) {
         this.user.login({username: username, password: password})
@@ -34,7 +34,7 @@ export class Landing extends Component {
         this.user.createAccount(account)
         .then(
             user => {
-                console.log(user)
+                localStorage.setItem("user", JSON.stringify(user))
                 const { from } = this.props.location.state || { from: {pathname: `/${user.type}/home` } };
                 this.props.history.push(from);
             }
@@ -46,6 +46,7 @@ export class Landing extends Component {
     }
 
     render() {
+        localStorage.removeItem('user');
         return(
             <div>
             <Router>

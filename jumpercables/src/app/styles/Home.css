@@ -14,3 +14,11 @@
 #inner-component {
     opacity: 1.0;
 }
+
+#searchButton {
+    border-radius: 0;
+}
+
+.close-btn {
+    transition: 2s;
+}

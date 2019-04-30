@@ -5,9 +5,8 @@ export class serviceRepository {
     };
 
     addService(service) {
-        let id = JSON.parse(localStorage.getItem('user')).id;
         return new Promise((resolve, reject) =>{
-            axios.post(`${this.url}/service/${id}`, service, this.config)
+            axios.post(`${this.url}/services/add/${service.car_id}`, service, this.config)
             .then(resp => {resolve(resp)})
             .catch(resp => alert(resp))
         })
