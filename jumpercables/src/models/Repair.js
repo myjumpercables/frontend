@@ -1,6 +1,5 @@
 export class Repair {
-  constructor(car, repairType, repairCost, repairDesc, repairDate) {
-    this.car = car;
+  constructor(  repairType, repairCost, repairDesc, repairDate) {
     this.repairType = repairType;
     this.repairCost = repairCost;
     this.repairDesc = repairDesc;
