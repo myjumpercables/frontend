@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const UserList = (props) => {
-    if(!props.users.length && !props.fromSearch) {
+export const CompanySearchList = (props) => {
+    if(!props.users.length) {
         return <div className="container">
-            <div className="alert alert-secondary">
-            You haven't worked with any users yet.
+            <div className="alert alert-warning text-center">
+            No users match that query.
             </div>
         </div>
     }

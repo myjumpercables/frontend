@@ -7,10 +7,7 @@ import { Company } from '../models/Company';
 
 export class UserHome extends Component {
     state = {
-        requests: [
-            new Request(210, "Joe's Repair", 12932), 
-            new Request(4010, "Madeline's", 932193),
-            new Request(999, "Prep", 23103102)],
+        requests: [],
         companies: [
             new Company(2103, "Patty's Tire Mill", "Good Ass Tires", "Dallas", "TX"),
             new Company(4501, "Repair Goons", "We Fix It", "Richardson", "TX"),
@@ -18,6 +15,17 @@ export class UserHome extends Component {
         ]
     }
     user = new userRepository();
+
+    componentDidMount() {
+        this.user.getRequests()
+        .then((resp, err) =>{
+            if (err) throw err;
+            this.setState({requests: resp})
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
 
     removeRequest(targetId) {
         this.setState(state => {

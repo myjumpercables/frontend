@@ -67,11 +67,23 @@ export class userRepository {
         })
     }
 
+    spawnRequest(userId) {
+        console.log(userId)
+        let payload = {
+            company_id: JSON.parse(localStorage.getItem('user')).id,
+        }
+        return new Promise((resolve, reject) =>{
+            axios.post(`${this.url}/requests/add/${userId}`, payload, this.config)
+            .then(resp => {resolve(resp)})
+            .catch(resp => {resolve({error: resp})})
+        })
+    }
+
     getRequests(account) {
         let id = JSON.parse(localStorage.getItem('user')).id;
         return new Promise((resolve, reject) =>{
-            axios.post(`${this.url}/manageaccount/${id}`, account, this.config)
-            .then(resp => {resolve(resp)})
+            axios.get(`${this.url}/requests/getRequests/${id}`, this.config)
+            .then(resp => {resolve(resp.data)})
             .catch(resp => alert(resp))
         })
     }

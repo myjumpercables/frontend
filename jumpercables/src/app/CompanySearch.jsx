@@ -50,7 +50,16 @@ export class CompanySearch extends Component {
                     <button name="searchButton" 
                     id="searchButton" 
                     className="btn btn-secondary"
-                    onClick={e => this.searchUser(e)}>Go</button>
+                    onClick={e => this.searchUser(e)}>
+                        <i className="fas fa-search "></i>
+                    </button>
+                    {this.props.fromSearch && <button name="searchButton" 
+                    id="searchButton " 
+                    className="close-btn btn btn-secondary btn-danger"
+                    style={{width: (this.props.fromSearch) ? "initial" : 0}}
+                    onClick={e => this.props.closeSearch(e)}>
+                        <i className="fas fa-times"></i>
+                    </button>}
                 </div>
             </div>
         );

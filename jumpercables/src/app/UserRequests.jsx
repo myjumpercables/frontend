@@ -7,14 +7,14 @@ export const UserRequests = (props) => (
         <div className="d-flex justify-content-around">
             {
                 props.requests.map((request, i) => (
-                    <div className="col-md-3 border bg-dark" key={i}> 
+                    <div className="col-md border bg-dark" key={i}> 
                     <div>
-                        <div className="text-white font-italic">{request.companyName} wants to connect!</div>
+                        <div className="text-white font-italic p-1">{request.companyName} wants to connect!</div>
                         <div className="row">
-                            <button  onClick={(e) => props.acceptCompany(request.id, i)} className="btn btn-info col" style={{borderRadius: 0}}>
+                            <button  onClick={(e) => props.acceptCompany(request.request_id, i)} className="btn btn-info col" style={{borderRadius: 0}}>
                                 Connect
                             </button>
-                            <button  onClick={(e) => props.rejectCompany(request.id, i)} className="btn btn-danger col" style={{borderRadius: 0}}>
+                            <button  onClick={(e) => props.rejectCompany(request.request_id, i)} className="btn btn-danger col" style={{borderRadius: 0}}>
                                 Reject
                             </button>
                         </div>
