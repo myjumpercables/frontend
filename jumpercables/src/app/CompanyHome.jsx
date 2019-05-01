@@ -10,7 +10,7 @@ export class CompanyHome extends Component {
 
     
     state = {
-        recentUsers: [ new User(undefined, "Billy", [new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002")]),  new User(undefined, "Billy", [new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002"), new Car(undefined, "Toyota", "Corolla", "2002")])],
+        recentUsers: [],
         fromSearch: false,
         usersSearch: [],
         alertMessage: ""
