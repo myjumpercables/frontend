@@ -28,20 +28,21 @@ export const CompanyRecentList = (props) => {
                                     user.cars.map((car, j) => (
                                         <div key={j}>
                                             {`${car.year} ${car.model} ${car.make}`}
-                                        </div>  
+                                        </div>
                                     ))
                                 }
                             </div>
                             <div className="card-footer">
-                                {user.hasAccess && <Link
+                                {user.state && <Link
                                     to={{
                                         pathname: `/company/repairs/${i}`,
                                         state: {
+                                            userId: user.user_id,
                                             redirect: "/company/home"
                                         }
                                     }}
                                     className="btn badge-warning btn-block mt-2">View User</Link>}
-                                {!user.hasAccess && <button
+                                {!user.state && <button
                                     className="btn btn-success btn-block"
                                     onClick={e => props.requestAccess(i)}>
                                     Request Access To User

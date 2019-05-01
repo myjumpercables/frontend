@@ -12,7 +12,7 @@ export class ServiceRepairView extends Component {
         cars: []
     }
     componentDidMount() {
-        this.carsRepository.getCars(1)
+        this.carsRepository.getCars()
             .then(cars =>{
                 this.setState({ cars: cars});
             })
