@@ -11,6 +11,7 @@ export class ManageAccount extends Component {
         state: "",
         city: "",
         description: "",
+        password: "",
         changes: false,
     }
 
@@ -22,6 +23,9 @@ export class ManageAccount extends Component {
     
     saveChanges() {
 
+    }
+
+    saveAccountDetails() {
     }
 
     closeModal() {
@@ -120,7 +124,9 @@ export class ManageAccount extends Component {
                         <input
                             type="password"
                             className="form-control"
-                            id="text"/>
+                            id="text"
+                            value={this.state.password}
+                            onChange={e => this.setState({ password: e.target.value})}/>
                         <small> 
                             We promise not share your information with anyone!
                         </small>
