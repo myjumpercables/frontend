@@ -118,4 +118,13 @@ export class userRepository {
             .catch(resp => alert(resp))
         })
     }
+
+    getDetails() {
+        let id = JSON.parse(localStorage.getItem('user')).id;
+        return new Promise((resolve, reject) =>{
+            axios.get(`${this.url}/users/details/${id}`, this.config)
+            .then(resp => {resolve(resp.data)})
+            .catch(resp => alert(resp))
+        })
+    }
 }

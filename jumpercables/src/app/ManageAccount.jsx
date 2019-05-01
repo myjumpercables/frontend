@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./styles/AccountView.css";
 import util from "../utils/mods";
 import states from "../models/statelist";
+import { userRepository } from "../api";
 
 export class ManageAccount extends Component {
     state = {
@@ -16,18 +17,25 @@ export class ManageAccount extends Component {
 
   baseState = this.state;
 
+    userRepository = new userRepository();
+  
     switchSelect(e) {
         this.setState({state: e.target.value})
     }
     
+    saveAccountDetails() {}
 
-  saveAccountDetails() {}
+    closeModal() {
+        this.setState(this.baseState);
+    }
 
-  closeModal() {
-    this.setState(this.baseState);
-  }
-
-  render() {
+    componentDidMount() {
+        this.userRepository.getDetails()
+        .then(row =>{
+            console.log(row);
+        })
+    }
+    render() {
     return (
       <>
         {/*EU Modal Start*/}
@@ -109,13 +117,13 @@ export class ManageAccount extends Component {
                     </div>
                     <div className="form-row">
                         <div className="col-lg">
-                        <label htmlFor="location">State</label>
+                        <label htmlFor="location">Location</label>
                         <input
                             type="text"
                             className="form-control"
                             id="text"
                             value={this.state.location}
-                            onChange={e => this.setState({ loca: e.target.value})}/>
+                            onChange={e => this.setState({ location: e.target.value})}/>
                         </div>
                     </div>
                   </form>
