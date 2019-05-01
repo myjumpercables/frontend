@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Repair } from "../models/Repair";
 import {repairRepository} from "../api";
 
 export class RepairForm extends Component {
@@ -127,13 +126,13 @@ export class RepairForm extends Component {
                       <div>
                         <button type="button" className="btn btn-info w-100" data-toggle="modal" data-target="#myModal"
                                 key={i}>
-                          {`${repairs.repair_id}`}
+                          {`${repairs.repair_type}`}
                         </button>
                         <div id="myModal" className="modal fade" role="dialog">
                           <div className="modal-dialog">
                             <div className="modal-content">
                               <div className="modal-header">
-                                <h4 className="modal-title">{`Repair #${repairs.repair_id} for $${repairs.cost}`}</h4>
+                                <h4 className="modal-title">{`Repair ${repairs.repair_type} for $${repairs.cost}`}</h4>
                                 <button type="button" className="close" data-dismiss="modal">&times;</button>
                               </div>
                               <div className="modal-body">
