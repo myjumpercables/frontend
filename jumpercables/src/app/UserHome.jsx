@@ -25,17 +25,34 @@ export class UserHome extends Component {
         .catch(err=>{
             console.log(err);
         })
+
+        this.user.getCompanies()
+        .then((resp, err) =>{
+            if (err) throw err;
+            console.log(resp);
+            this.setState({companies: resp})
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     }
 
     removeRequest(targetId) {
         this.setState(state => {
-            return {requests: state.requests.filter((request) => request.id !== targetId)}
+            return {requests: state.requests.filter((request) => request.request_id !== targetId)}
         })
     }
 
     acceptCompany(requestId, i) {
         console.log(requestId);
-        this.removeRequest(requestId);
+        this.user.acceptRequest(requestId)
+        .then((resp, err)=>{
+            if (err) throw err;
+            this.removeRequest(requestId);
+        })
+        .catch(err=>{
+            console.log(err)
+        })
     }
 
     rejectCompany(requestId, i) {
