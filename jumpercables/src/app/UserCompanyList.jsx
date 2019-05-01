@@ -11,7 +11,7 @@ export const UserCompanyList = (props) => (
                 <div className="col-lg-4 mt-2" key={i}>
                 <div className="card">
                     <div className="card-body">
-                        {company.name}
+                        {company.companyName}
                     </div>
                     <div className="card-body d-flex justify-content-center">
                         <div>
@@ -20,7 +20,7 @@ export const UserCompanyList = (props) => (
                     </div>
                     <div className="card-footer">
                         <div>
-                            {company.city}, {company.state}
+                            {company.location}
                         </div>
                     </div>
                 </div>

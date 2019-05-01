@@ -90,7 +90,7 @@ export class userRepository {
 
     acceptRequest(requestId) {
         return new Promise((resolve, reject) =>{
-            axios.post(`${this.url}/requests/add/${requestId}`, this.config)
+            axios.post(`${this.url}/requests/update/${requestId}`, this.config)
             .then(resp => {resolve(resp)})
             .catch(resp => alert(resp))
         })
@@ -98,6 +98,24 @@ export class userRepository {
 
     rejectRequest(requestId) {
         return new Promise((resolve, reject) =>{
+        })
+    }
+
+    getCompanies() {
+        let id = JSON.parse(localStorage.getItem('user')).id;
+        return new Promise((resolve, reject) =>{
+            axios.get(`${this.url}/requests/companies/${id}`, this.config)
+            .then(resp => {resolve(resp.data)})
+            .catch(resp => alert(resp))
+        })
+    }
+
+    getUsers() {
+        let id = JSON.parse(localStorage.getItem('user')).id;
+        return new Promise((resolve, reject) =>{
+            axios.get(`${this.url}/requests/users/${id}`, this.config)
+            .then(resp => {resolve(resp.data)})
+            .catch(resp => alert(resp))
         })
     }
 }

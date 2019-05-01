@@ -27,6 +27,17 @@ export class CompanyHome extends Component {
         })
     }
 
+    componentDidMount() {
+        this.userRepository.getUsers()
+        .then((resp, err) =>{
+            if (err) throw err;
+            console.log(resp)
+            this.setState({recentUsers: resp});
+        }).catch(err =>{
+            console.log(err);
+        })
+    }
+
     closeSearch() {
         this.setState({ fromSearch: false})
     }
