@@ -34,6 +34,10 @@ export class Landing extends Component {
         this.user.createAccount(account)
         .then(
             user => {
+                if(user.error) {
+                    this.setState({createAccountError: user.error})
+                    return;
+                }
                 localStorage.setItem("user", JSON.stringify(user))
                 const { from } = this.props.location.state || { from: {pathname: `/${user.type}/home` } };
                 this.props.history.push(from);
@@ -63,10 +67,10 @@ export class Landing extends Component {
                     <Route exact path ='/landing' component={Home}/>
                     <Route
                         path='/login' 
-                        render={(props) => <Login {...props} onLoginAttempt={(e, username, password) => this.onLoginAttempt(e, username, password)}></Login>}/>
+                        render={(props) => <Login {...props} error={this.state.loginError} onLoginAttempt={(e, username, password) => this.onLoginAttempt(e, username, password)}></Login>}/>
                     <Route 
                         path='/register' 
-                        render={(props) => <CreateAccount {...props} onCreateAccount={(e, account) => this.onCreateAccount(e, account)}/>}
+                        render={(props) => <CreateAccount {...props} error={this.state.createAccountError} onCreateAccount={(e, account) => this.onCreateAccount(e, account)}/>}
                         />
                 </Switch>
                 </div>

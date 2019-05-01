@@ -14,7 +14,6 @@ export class userRepository {
       axios
         .post(`${this.url}/login`, loginData, this.config)
         .then(resp => {
-          console.log(resp);
           resolve(resp.data);
         })
         .catch(resp => resolve({ error: "Invalid Credentials" }));
@@ -41,7 +40,7 @@ export class userRepository {
           this.config
         )
         .then(resp => resolve(resp.data))
-        .catch(resp => alert(resp));
+        .catch(resp => resolve({ error: "Username Already Taken" }));
     });
   }
 

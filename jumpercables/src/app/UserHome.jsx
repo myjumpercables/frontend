@@ -9,11 +9,7 @@ import { Redirect } from 'react-router-dom'
 export class UserHome extends Component {
     state = {
         requests: [],
-        companies: [
-            new Company(2103, "Patty's Tire Mill", "Good Ass Tires", "Dallas", "TX"),
-            new Company(4501, "Repair Goons", "We Fix It", "Richardson", "TX"),
-            new Company(70412, "Nuts & Bolts", "We Break It First", "Austin", "TX"),
-        ],
+        companies: [],
     }
     user = new userRepository();
 

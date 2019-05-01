@@ -20,15 +20,27 @@ export class CreateAccount extends Component {
         email: this.state.email,
         phone: this.state.phone,
         password: this.state.password,
-        isCompany: this.state.isCompany
+        isCompany: this.state.isCompany,
+        error: "",
+        passwordError: "Password must match",
       });
     }
   }
 
   isValidForm() {
-    /* TODO: return false if forms aren't valid 
-           And write to page what needs to be changed*/
-    return true;
+    this.setState({error: ""});
+    this.setState({passwordError: ""})
+    if(this.state.name && this.state.password && this.state.phone && this.state.re_password && this.state.email) {
+      if(this.state.password === this.state.re_password){
+        return true;
+      }
+      this.setState({passwordError: "Passwords must match."})
+      return false;
+    }
+    else {
+      this.setState({error: "Please fill out all forms."})
+      return false;
+    }
   }
 
   render() {
@@ -50,7 +62,8 @@ export class CreateAccount extends Component {
                     className="form-control"
                     id="NameInput"
                     placeholder="Name..."
-                  />
+                    />
+                    {!!this.props.error && <small className="text-danger font-weight-bold">{this.props.error}</small>}
                 </div>
                 <div className="form-group">
                   <label htmlFor="EmailInput">Email address</label>
@@ -63,9 +76,6 @@ export class CreateAccount extends Component {
                     aria-describedby="emailHelp"
                     placeholder="Enter your email"
                   />
-                  <small id="emailHelp" className="form-text text-muted">
-                    We'll never share your email with anyone else.
-                  </small>
                 </div>
 
                 <div className="form-group">
@@ -80,7 +90,7 @@ export class CreateAccount extends Component {
                     placeholder="Enter your phone number"
                   />
                 </div>
-
+                {!!this.state.passwordError && <small className="text-danger font-weight-bold">{this.state.passwordError}</small>}
                 <div className="form-group">
                   <label htmlFor="PasswordInput">Password</label>
                   <input
@@ -121,6 +131,7 @@ export class CreateAccount extends Component {
                     This is an organization
                   </label>
                 </div>
+                {!!this.state.error && <small className="text-danger font-weight-bold">{this.state.error}</small>}
                 <hr />
                 <button
                   type="submit"
