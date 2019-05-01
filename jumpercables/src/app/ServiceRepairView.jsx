@@ -2,21 +2,30 @@ import React, { Component } from "react";
 import {Repair} from "../models/Repair";
 import {Car} from "../models/Car";
 import {ServiceRepairList} from "./ServiceRepairList";
+import {Service} from "../models/Service";
+import {carRepository} from "../api";
 
 export class ServiceRepairView extends Component {
+    carsRepository = new carRepository();
+
     state ={
-        repairs: [
-            new Repair(new Car(2, 'Civic', 'Honda', 2010, ''), 'Replace alternator and Muffler', 1500)
-        ]
+        cars: []
+    }
+    componentDidMount() {
+        this.carsRepository.getCars(1)
+            .then(cars =>{
+                this.setState({ cars: cars});
+            })
     }
     render() {
         return (
             <>
                 <div className="container d-flex flex-column align-items-center">
                     <h1>Repairs</h1>
-                    <ServiceRepairList repairs={this.state.repairs}></ServiceRepairList>
+                    <ServiceRepairList cars={this.state.cars}></ServiceRepairList>
                 </div>
             </>
         );
     }
+
 }

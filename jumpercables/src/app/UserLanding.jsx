@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './styles/OnlineView.css'
-import { OnlineViewHeader } from './OnlineViewHeader';
 import { UserPage } from './UserPage';
 
 import { Route } from 'react-router-dom';

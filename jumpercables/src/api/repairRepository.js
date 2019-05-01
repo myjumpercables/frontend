@@ -4,10 +4,10 @@ export class repairRepository {
     config = {
     };
 
-    addService(service) {
-        let id = JSON.parse(localStorage.getItem('user')).id;
+    addRepair(repair, serviceId) {
+
         return new Promise((resolve, reject) =>{
-            axios.post(`${this.url}/service/${id}`, service, this.config)
+            axios.post(`${this.url}/repair/add/${serviceId}`, repair, this.config)
             .then(resp => {resolve(resp)})
             .catch(resp => alert(resp))
         })
