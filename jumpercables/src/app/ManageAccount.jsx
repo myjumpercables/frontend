@@ -33,6 +33,13 @@ export class ManageAccount extends Component {
         this.userRepository.getDetails()
         .then(row =>{
             console.log(row);
+            this.setState({
+                name: (row.username) ? row.username : "",
+                email: (row.email) ? row.email : "",
+                phone: (row.phone) ? row.phone : "",
+                location: (row.location) ? row.location : "",
+                description: (row.description) ? row.description : "",
+            })
         })
     }
     render() {
