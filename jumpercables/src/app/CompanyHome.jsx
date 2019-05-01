@@ -7,8 +7,6 @@ import { userRepository } from '../api/userRepository';
 import { CompanyRecentList } from './CompanyRecentUsers';
 
 export class CompanyHome extends Component {
-
-    
     state = {
         recentUsers: [],
         fromSearch: false,
