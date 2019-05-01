@@ -48,24 +48,26 @@ export class userRepository {
   updateAccount(account) {
     let id = JSON.parse(localStorage.getItem("user")).id;
     return new Promise((resolve, reject) => {
-      axios
-        .post(`${this.url}/manageaccount/${id}`, account, this.config)
-        .then(resp => {
-          resolve(resp);
+      axios.post(`${this.url}/manage-account/${id}`, account, this.config)
+        .then(resp=> {
+            resolve(resp)
         })
-        .catch(resp => alert(resp));
+        .catch(resp => {resolve({error: "Invalid Credentials"})});
     });
   }
 
   changePassword(oldPassword, newPassword) {
     let id = JSON.parse(localStorage.getItem("user")).id;
+    let payload = {
+        password: oldPassword,
+        new_password: newPassword,
+    }
     return new Promise((resolve, reject) => {
-      axios
-        .post(`${this.url}/users/changePassword`)
-        .then(resp => {
-          resolve(resp.data);
+      axios.post(`${this.url}/update-password/${id}`, payload, this.config)
+        .then(resp=> {
+            resolve(resp)
         })
-        .catch(resp => alert(resp));
+    .catch(resp => {resolve({error: "Invalid Credentials"})});
     });
   }
 
@@ -121,7 +123,14 @@ export class userRepository {
   }
 
   rejectRequest(requestId) {
-    return new Promise((resolve, reject) => {});
+    return new Promise((resolve, reject) => {
+        axios
+          .post(`${this.url}/requests/delete/${requestId}`, this.config)
+          .then(resp => {
+            resolve(resp);
+          })
+          .catch(resp => alert(resp));
+      });;
   }
 
   getCompanies() {
@@ -141,6 +150,17 @@ export class userRepository {
     return new Promise((resolve, reject) => {
       axios
         .get(`${this.url}/requests/users/${id}`, this.config)
+        .then(resp => {
+          resolve(resp.data);
+        })
+        .catch(resp => alert(resp));
+    });
+  }
+
+  getDetails() {
+    let id = JSON.parse(localStorage.getItem("user")).id;
+    return new Promise((resolve, reject) => {
+      axios.get(`${this.url}/users/details/${id}`, this.config)
         .then(resp => {
           resolve(resp.data);
         })

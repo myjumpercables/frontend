@@ -4,6 +4,7 @@ import { Request } from '../models/Request';
 import { UserCompanyList } from './UserCompanyList';
 import { UserRequests } from './UserRequests';
 import { Company } from '../models/Company';
+import { Redirect } from 'react-router-dom'
 
 export class UserHome extends Component {
     state = {
@@ -12,7 +13,7 @@ export class UserHome extends Component {
             new Company(2103, "Patty's Tire Mill", "Good Ass Tires", "Dallas", "TX"),
             new Company(4501, "Repair Goons", "We Fix It", "Richardson", "TX"),
             new Company(70412, "Nuts & Bolts", "We Break It First", "Austin", "TX"),
-        ]
+        ],
     }
     user = new userRepository();
 
@@ -26,6 +27,18 @@ export class UserHome extends Component {
             console.log(err);
         })
 
+        this.user.getCompanies()
+        .then((resp, err) =>{
+            if (err) throw err;
+            console.log(resp);
+            this.setState({companies: resp})
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
+    pseudoRefresh() {
         this.user.getCompanies()
         .then((resp, err) =>{
             if (err) throw err;
@@ -53,12 +66,20 @@ export class UserHome extends Component {
         .catch(err=>{
             console.log(err)
         })
-        this.state.companies.push(requestId);
+        this.pseudoRefresh();
     }
 
     rejectCompany(requestId, i) {
         console.log(requestId);
-        this.removeRequest(requestId);
+        this.user.rejectRequest(requestId)
+        .then((resp, err)=>{
+            if (err) throw err;
+            this.removeRequest(requestId);
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+
     }
 
     render() {

@@ -6,13 +6,18 @@ import { userRepository } from "../api";
 
 export class ManageAccount extends Component {
     state = {
-        name: "",
+        username: "",
         email: "",
         phone: "",
         location: "",
         description: "",
         password: "",
-        changes: false,
+        changes: "",
+
+        oldPassword: "",
+        newPassword: "",
+        newPasswordVerification: "",
+        passwordError: "",
     }
 
   baseState = this.state;
@@ -23,9 +28,49 @@ export class ManageAccount extends Component {
         this.setState({state: e.target.value})
     }
     
-    saveAccountDetails() {}
+    saveAccountDetails() {
+        let account = {};
+        account = this.state;
+        delete account.changes;
+        this.userRepository.updateAccount(account)
+        .then((resp, err)=>{
+            if(err) throw err;
+            if(resp.error) throw (resp.error);
+            this.setState({ changes: "Changes Saved" })
+            this.baseState = account;
+            this.baseState.password = ""
+        })
+        .catch(err=>{
+            this.setState({ changes: "Invalid Credentials"})
+            this.baseState = account;
+            this.baseState.password = ""
+        })
+    }
+
+    savePassword() {
+        if(this.state.oldPassword === "" || this.state.newPassword === "" || this.state.newPasswordVerification === "") {
+            this.setState({ passwordError: "Fill out all forms please."})
+            return;
+        }
+        if(!(this.state.newPassword === this.state.newPasswordVerification)){
+            this.setState({ passwordError: "New Password's must match."})
+            return;
+        }
+        this.setState({ passwordError: ""});
+        this.userRepository.changePassword(this.state.oldPassword, this.state.newPassword)
+        .then((resp, err)=>{
+            if(err) throw err;
+            if(resp.error) throw (resp.error);
+            this.setState({ changes: "Changes Saved" })
+
+        })
+        .catch(err=>{
+            this.setState({ changes: "Invalid Credentials"})
+        })
+    }
 
     closeModal() {
+        this.baseState['changes'] = "";
         this.setState(this.baseState);
     }
 
@@ -34,7 +79,7 @@ export class ManageAccount extends Component {
         .then(row =>{
             console.log(row);
             this.setState({
-                name: (row.username) ? row.username : "",
+                username: (row.username) ? row.username : "",
                 email: (row.email) ? row.email : "",
                 phone: (row.phone) ? row.phone : "",
                 location: (row.location) ? row.location : "",
@@ -60,9 +105,9 @@ export class ManageAccount extends Component {
                 <h3>Manage Account</h3>
               </div>
               <div className="modal-body container">
-                {this.state.changes && (
+                {!!this.state.changes && (
                   <div className="alert alert-info w-100 text-center">
-                    Changes Saved.
+                    {this.state.changes}
                   </div>
                 )}
                 <div className="container">
@@ -74,9 +119,9 @@ export class ManageAccount extends Component {
                           className="form-control"
                           type="text"
                           id="userForm"
-                          value={this.state.name}
+                          value={this.state.username}
                           onChange={e =>
-                            this.setState({ name: e.target.value })
+                            this.setState({ username: e.target.value })
                           }
                         />
                       </div>
@@ -162,7 +207,7 @@ export class ManageAccount extends Component {
                   <div className="row justify-content-end">
                     <button
                       className="btn btn-primary col-md-4 m-2"
-                      onClick={() => this.saveChanges()}
+                      onClick={() => this.saveAccountDetails()}
                     >
                       Save Changes
                     </button>
@@ -192,15 +237,21 @@ export class ManageAccount extends Component {
               <div className="modal-body container">
                 <form className="row justify-content-center">
                   <div className="form-group">
-                    <div id="oldPasswordError" className="error">
+                    {!!this.state.changes && <div className="alert alert-info w-100 text-center">
+                        {this.state.changes}
+                    </div>}
+                    <div id="PasswordError" className="error">
+                          {this.state.passwordError}
                       <br />
                     </div>
-                    <label htmlFor="oldPassword">Enter Your Old Password</label>
+                    <label htmlFor="oldPassword">Enter Your Current Password</label>
                     <div className="mb-2 input-group" id="show_hide_password">
                       <input
                         type="password"
                         className="form-control"
                         id="oldPassword"
+                        value={this.state.oldPassword}
+                        onChange={e=> this.setState({oldPassword: e.target.value})}
                       />
                     </div>
                     <div id="newPasswordError" className="error">
@@ -212,6 +263,8 @@ export class ManageAccount extends Component {
                         type="password"
                         className="form-control"
                         id="newPassword"
+                        value={this.state.newPassword}
+                        onChange={e=> this.setState({newPassword: e.target.value})}
                       />
                     </div>
                     <div id="newPasswordCheckError" className="error">
@@ -225,12 +278,14 @@ export class ManageAccount extends Component {
                         type="password"
                         className="form-control"
                         id="newPasswordCheck"
+                        value={this.state.newPasswordVerification}
+                        onChange={e=> this.setState({newPasswordVerification: e.target.value})}
                       />
                     </div>
                     <button
                       type="button"
                       className="mr-2 btn btn-primary"
-                      onClick={savePassword}
+                      onClick={() =>this.savePassword()}
                     >
                       Save changes
                     </button>
@@ -238,7 +293,7 @@ export class ManageAccount extends Component {
                       type="button"
                       className="btn btn-secondary"
                       data-dismiss="modal"
-                      onClick={clearManagePasswordModal}
+                      onClick={() => this.closeModal()}
                     >
                       Close
                     </button>
@@ -323,67 +378,67 @@ const getControl = flag => {
   }
 };
 
-const saveAccountDetails = e => {
-  let controls = getControl(1);
-  let updateObj = {};
-  let validEmailPattern = /.+@.+\..+/;
-  e.preventDefault();
+// const saveAccountDetails = e => {
+//   let controls = getControl(1);
+//   let updateObj = {};
+//   let validEmailPattern = /.+@.+\..+/;
+//   e.preventDefault();
 
-  //checks if potenially valid email. assigns to update packet if yes
-  if (controls.email.value.match(validEmailPattern)) {
-    updateObj["email"] = controls.email.value;
-  }
-  if (controls.user.value) {
-    updateObj["user"] = controls.user.value;
-  }
-  console.log(updateObj);
-  if (util.isEmptyObject(updateObj)) {
-    controls.euError.innerHTML = "Enter a Valid Email or Username";
-    return;
-  }
-  if (controls.password.value) {
-    updateObj["password"] = controls.password.value;
-    // request the password
-    // if good, change set status good
-  } else {
-    controls.passwordError.innerHTML = "Please enter your Password";
-    return;
-  }
-};
+//   //checks if potenially valid email. assigns to update packet if yes
+//   if (controls.email.value.match(validEmailPattern)) {
+//     updateObj["email"] = controls.email.value;
+//   }
+//   if (controls.user.value) {
+//     updateObj["user"] = controls.user.value;
+//   }
+//   console.log(updateObj);
+//   if (util.isEmptyObject(updateObj)) {
+//     controls.euError.innerHTML = "Enter a Valid Email or Username";
+//     return;
+//   }
+//   if (controls.password.value) {
+//     updateObj["password"] = controls.password.value;
+//     // request the password
+//     // if good, change set status good
+//   } else {
+//     controls.passwordError.innerHTML = "Please enter your Password";
+//     return;
+//   }
+// };
 
-// clears Email/Username Modal
-const clearEUModal = e => {
-  let controls = getControl(1);
-  for (var key in controls) {
-    controls[key].innerHTML = "";
-    controls[key].value = "";
-  }
-};
+// // clears Email/Username Modal
+// const clearEUModal = e => {
+//   let controls = getControl(1);
+//   for (var key in controls) {
+//     controls[key].innerHTML = "";
+//     controls[key].value = "";
+//   }
+// };
 
-// controls Manage Password Modal
-const savePassword = e => {
-  let controls = getControl(2);
-  e.preventDefault();
-  let updateObj = {};
-  if (controls.oldPassword.value) {
-    updateObj["oldPassword"] = controls.oldPassword.value;
-  } else {
-    controls.oldPasswordError.innerHTML = "You must enter your old password";
-    return;
-  }
+// // controls Manage Password Modal
+// const savePassword = e => {
+//   let controls = getControl(2);
+//   e.preventDefault();
+//   let updateObj = {};
+//   if (controls.oldPassword.value) {
+//     updateObj["oldPassword"] = controls.oldPassword.value;
+//   } else {
+//     controls.oldPasswordError.innerHTML = "You must enter your old password";
+//     return;
+//   }
 
-  if (controls.newPassword.value) {
-    if (controls.newPassword.value === controls.newPasswordCheck.value) {
-      updateObj["newPassword"] = controls.newPassword.value;
-    } else {
-      controls.newPasswordCheckError.innerHTML = "Passwords much match";
-      return;
-    }
-  } else {
-    controls.newPasswordError.innerHTML = "You must enter you new password";
-    return;
-  }
-};
+//   if (controls.newPassword.value) {
+//     if (controls.newPassword.value === controls.newPasswordCheck.value) {
+//       updateObj["newPassword"] = controls.newPassword.value;
+//     } else {
+//       controls.newPasswordCheckError.innerHTML = "Passwords much match";
+//       return;
+//     }
+//   } else {
+//     controls.newPasswordError.innerHTML = "You must enter you new password";
+//     return;
+//   }
+// };
 
 const clearManagePasswordModal = e => {
   let controls = getControl(2);
