@@ -12,9 +12,10 @@ export class CompanyUserView extends Component {
     componentDidMount() {
         debugger;
         console.log(this.props.location.state.userId)
-        this.carRepository.getCars(this.props.location.state.userId)
+        this.carRepository.getCar(this.props.location.state.userId)
             .then(cars => {
                 this.setState({cars: cars})
+                console.log(cars)
             })
     }
     render() {
@@ -24,8 +25,8 @@ export class CompanyUserView extends Component {
                     <div className='row'>
                         {
                             this.state.cars.map((car, i) =>
-                                <div className='col-lg-4'>
-                                    <div className='card ' key={i}>
+                                <div className='col-lg-4' key={i}>
+                                    <div className='card'>
                                         <div className='card-header'>
                                             <h3>{`${car.year} ${car.make} ${car.model}`}</h3>
                                         </div>

@@ -22,12 +22,10 @@ export class RepairForm extends Component {
     }, this.props.location.state.service.service_id)
     // clears the form
     this.setState({
-      subject: '',
-      description: '',
       repairType: "",
-      repairCost: "",
-      repairDesc: "",
-      repairDate: ""
+    repairCost: "",
+    repairDesc: "",
+    repairDate: new Date(),
     });
   }
 

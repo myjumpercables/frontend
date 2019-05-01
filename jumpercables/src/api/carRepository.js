@@ -15,6 +15,15 @@ export class carRepository {
         })
     }
 
+    getCar(userId) {
+        console.log(userId);
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.url}/cars/${userId}`, this.config)
+            .then(resp => resolve(resp.data))
+            .catch(resp => alert(resp));
+        })
+    }
+
     // create new car by user id
     addCar(car) {
         let id = JSON.parse(localStorage.getItem('user')).id;
