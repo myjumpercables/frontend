@@ -28,7 +28,7 @@ export const CompanyRecentList = (props) => {
                                     user.cars.map((car, j) => (
                                         <div key={j}>
                                             {`${car.year} ${car.model} ${car.make}`}
-                                        </div>  
+                                        </div>
                                     ))
                                 }
                             </div>
@@ -37,6 +37,7 @@ export const CompanyRecentList = (props) => {
                                     to={{
                                         pathname: `/company/repairs/${i}`,
                                         state: {
+                                            userId: user.user_id,
                                             redirect: "/company/home"
                                         }
                                     }}
