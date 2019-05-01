@@ -36,7 +36,7 @@ export const ServiceRepairList = (props) => {
                                                 </div>
                                                 {!!service.repairs.length && service.repairs.map((repair, k) =>
 
-                                                    <div id={`service${j}${k}`} className="collapse"
+                                                    <div id={`service${i}${j}`} className="collapse"
                                                          aria-labelledby={`heading${j}`} data-parent="#accordion" key={k}>
                                                         <div className="card-body" id={`accordion${i}${j}`}>
                                                             <div className="card-header">
@@ -48,6 +48,12 @@ export const ServiceRepairList = (props) => {
                                                         </div>
                                                     </div>
                                                 )}
+                                                {(service.repairs.length === 0)&& <div id={`service${i}${j}`} className="collapse"
+                                                         aria-labelledby={`heading${j}`} data-parent="#accordion">
+                                                    <div className='card-body'>
+                                                        There are no repairs for this service yet
+                                                    </div>
+                                                </div>}
                                             </div>
                                         </div>
                                     )}

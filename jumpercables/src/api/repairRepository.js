@@ -5,7 +5,6 @@ export class repairRepository {
     };
 
     addRepair(repair, serviceId) {
-
         return new Promise((resolve, reject) =>{
             axios.post(`${this.url}/repair/add/${serviceId}`, repair, this.config)
             .then(resp => {resolve(resp)})
