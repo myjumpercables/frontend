@@ -17,7 +17,7 @@ export class Landing extends Component {
 
     onLoginAttempt(username, password) {
         this.user.login({username: username, password: password})
-        .then(
+        .then( 
             user => {
                 if(user.error) {
                     this.setState({loginError: user.error})
