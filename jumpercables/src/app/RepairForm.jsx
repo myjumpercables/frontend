@@ -9,8 +9,21 @@ export class RepairForm extends Component {
     repairCost: "",
     repairDesc: "",
     repairDate: new Date(),
-    redirect: ""
+    redirect: "",
+    totalCost: this.getTotalCost(),
   };
+
+  getTotalCost(repai) {
+    var cost = 0;
+    const repairs = this.props.location.state.service.repairs;
+    repairs.forEach(element => {
+      cost += element.cost;
+    });
+    // this.props.location.state.service.repairs.foreach((repair)=>{
+    //   cost = repair.cost;
+    // })
+    return cost;
+  }
 
   onSubmit() {
     this.repairRepository.addRepair({
@@ -37,9 +50,9 @@ export class RepairForm extends Component {
             <div className='col-lg-9 col-md-8 col-sm-12 p-1'>
               <div className="card p-0">
                 <div className='card-header'>
-                  <h3 className="font-weight-bold">
-                    Add a repair for {this.props.location.state.service.service_type.toLowerCase()}
-                  </h3>
+                  <h4 className="font-weight-bold">
+                    Service: {this.props.location.state.service.service_type}
+                  </h4>
                   <p className=''> {this.props.location.state.service.service_desc}</p>
                 </div>
                 <div className="card-body">
@@ -120,24 +133,24 @@ export class RepairForm extends Component {
             {!!this.props.location.state.service.repairs.length &&  <div className='col-lg-3 col-md-4 col-sm-12 p-1'>
               <div className='card'>
                 <div className='card-header'>
-                  Past Repairs for this service
+                  Past Repairs:
                 </div>
                 <div className='card-body'>
-                  {this.props.location.state.service.repairs.map((repairs, i) =>
+                  {this.props.location.state.service.repairs.map((repair, i) =>
                       <div>
-                        <button type="button" className="btn btn-info w-100" data-toggle="modal" data-target="#myModal"
+                        <button type="button" className="btn btn-info w-100 mt-1" data-toggle="modal" data-target={`#myModal${i}`}
                                 key={i}>
-                          {`${repairs.repair_id}`}
+                          {`${repair.repair_type}`}
                         </button>
-                        <div id="myModal" className="modal fade" role="dialog">
+                        <div id={`myModal${i}`} className="modal fade" role="dialog">
                           <div className="modal-dialog">
                             <div className="modal-content">
                               <div className="modal-header">
-                                <h4 className="modal-title">{`Repair #${repairs.repair_id} for $${repairs.cost}`}</h4>
+                                <h4 className="modal-title">Repair: <span className=" font-italic">{repair.repair_type}</span><span className="text-muted ml-2">${repair.cost}</span></h4>
                                 <button type="button" className="close" data-dismiss="modal">&times;</button>
                               </div>
                               <div className="modal-body">
-                                <p>{repairs.repair_desc}</p>
+                                <p>{repair.repair_desc}</p>
                               </div>
                               <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
@@ -147,6 +160,9 @@ export class RepairForm extends Component {
                         </div>
                       </div>
                   )}
+                </div>
+                <div className="text-muted text-center">
+                  <h5>${this.state.totalCost}</h5>
                 </div>
               </div>
             </div>}

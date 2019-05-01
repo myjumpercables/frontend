@@ -10,7 +10,6 @@ export class CompanyUserView extends Component {
         cars: []
     }
     componentDidMount() {
-        debugger;
         console.log(this.props.location.state.userId)
         this.carRepository.getCar(this.props.location.state.userId)
             .then(cars => {
@@ -37,7 +36,8 @@ export class CompanyUserView extends Component {
                                                         pathname: `/company/addRepair` ,
                                                         state: {
                                                             service: service,
-                                                            redirect: "/company/home"
+                                                            redirect: "/company/home",
+                                                            return: `/company/repairs/${this.props.location.state.userId}`
                                                         }}}>
                                                         <strong>Service: {service.service_desc}</strong>
                                                     </Link>
