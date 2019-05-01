@@ -53,6 +53,7 @@ export class UserHome extends Component {
         .catch(err=>{
             console.log(err)
         })
+        this.state.companies.push(requestId);
     }
 
     rejectCompany(requestId, i) {

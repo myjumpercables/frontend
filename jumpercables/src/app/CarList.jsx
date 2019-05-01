@@ -66,7 +66,7 @@ const CarList = props => {
                       >
                         <div className="card-body">{service.service_desc}</div>
                         <div className="card-footer text-muted">
-                          {service.service_date}
+                          {service.date}
                         </div>
                       </div>
                     </div>

@@ -19,7 +19,7 @@ export const ServiceRepairList = (props) => {
             <div className='row justify-content-center'>
                 {
                     props.cars.map((car, i) =>
-                        <div className='col-6'>
+                        <div className='col-lg-6 col-sm-12 p-2'>
                             <div className='card bg-light'>
                                 <div className='card-header border-bottom' key={i}>
                                     <h4>{car.year} {car.make} {car.model}</h4>
@@ -61,7 +61,13 @@ export const ServiceRepairList = (props) => {
                                                 )}
                                             </div>
                                         </div>
-                                    )}</div>
+                                    )}
+                                    {(car.services.length === 0)&& <div>
+                                        <div className='card-body'>
+                                            There are no services for this car
+                                        </div>
+                                    </div>}
+                                </div>
                             </div>
                         </div>)
                 }
