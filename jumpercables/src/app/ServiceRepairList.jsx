@@ -40,7 +40,8 @@ export const ServiceRepairList = (props) => {
                                                          aria-labelledby={`heading${j}`} data-parent="#accordion" key={k}>
                                                         <div className="card-body" id={`accordion${i}${j}`}>
                                                             <div className="card-header">
-                                                                {`The repair is ${repair.repair_type}`}
+                                                                <h4 className="text-muted">${repair.cost}</h4>
+                                                                <h4>Repair: {`${repair.repair_type}`}</h4>
                                                             </div>
                                                             <div className='card-body'>
                                                                 {repair.repair_desc}
