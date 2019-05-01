@@ -33,7 +33,7 @@ export const CompanyRecentList = (props) => {
                                 }
                             </div>
                             <div className="card-footer">
-                                {user.hasAccess && <Link
+                                {user.state && <Link
                                     to={{
                                         pathname: `/company/repairs/${i}`,
                                         state: {
@@ -41,7 +41,7 @@ export const CompanyRecentList = (props) => {
                                         }
                                     }}
                                     className="btn badge-warning btn-block mt-2">View User</Link>}
-                                {!user.hasAccess && <button
+                                {!user.state && <button
                                     className="btn btn-success btn-block"
                                     onClick={e => props.requestAccess(i)}>
                                     Request Access To User
