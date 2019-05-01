@@ -12,7 +12,7 @@ export class ServiceRepairView extends Component {
         cars: []
     }
     componentDidMount() {
-        this.carsRepository.getCars(1)
+        this.carsRepository.getCars()
             .then(cars =>{
                 this.setState({ cars: cars});
             })
@@ -21,7 +21,7 @@ export class ServiceRepairView extends Component {
         return (
             <>
                 <div className="container d-flex flex-column align-items-center">
-                    <h1>Repairs</h1>
+                    <h1>Services and Repairs</h1>
                     <ServiceRepairList cars={this.state.cars}></ServiceRepairList>
                 </div>
             </>

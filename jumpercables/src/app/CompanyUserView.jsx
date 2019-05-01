@@ -31,14 +31,14 @@ export class CompanyUserView extends Component {
                                         </div>
                                         <div className='card-body'>
                                             {!!car.services.length && car.services.map((service, j) =>
-                                                <div className='p-2'>
+                                                <div className='p-2 container' key={j}>
                                                     <Link className='btn btn-info w-100 text-left' to={{
                                                         pathname: `/company/addRepair` ,
                                                         state: {
                                                             service: service,
                                                             redirect: "/company/home"
                                                         }}}>
-                                                        <strong>Service: {service.subject}</strong>
+                                                        <strong>Service: {service.service_desc}</strong>
                                                     </Link>
                                                 </div>
                                             )}

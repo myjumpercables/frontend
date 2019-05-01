@@ -32,7 +32,7 @@ const userRoutes = (path = "/user") => {
 
         {
             path: `${path}/repairs`,
-            text: "Accept and Deny Repairs",
+            text: "View Services and Repairs",
             component: ServiceRepairView
         },
 
