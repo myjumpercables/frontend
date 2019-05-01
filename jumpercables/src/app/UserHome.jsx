@@ -56,17 +56,25 @@ export class UserHome extends Component {
         })
     }
 
+    switchList(targetId) {
+        let newCompany = this.state.requests.filter((request) => request.request_id === targetId)[0];
+        console.log("");
+        this.setState(state =>{
+            return  state.companies.push(newCompany)
+        })
+    }
+
     acceptCompany(requestId, i) {
         console.log(requestId);
         this.user.acceptRequest(requestId)
         .then((resp, err)=>{
             if (err) throw err;
+            this.switchList(requestId);
             this.removeRequest(requestId);
         })
         .catch(err=>{
             console.log(err)
         })
-        this.pseudoRefresh();
     }
 
     rejectCompany(requestId, i) {

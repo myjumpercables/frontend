@@ -5,7 +5,7 @@ export const CompanySearchList = (props) => {
     if(!props.users.length) {
         return <div className="container">
             <div className="alert alert-warning text-center">
-            No users match that query.
+            No users!
             </div>
         </div>
     }
@@ -16,8 +16,8 @@ export const CompanySearchList = (props) => {
     <div className="row mt-2">
     {
         props.users.map((user, i) => 
-            <div key={i} className=" col-md-4 mb-3">
-                    <div className="card bg-light">
+            <div key={i} className="col-xs-6 col-md-4 mb-3">
+                <div className="card h-100 bg-light">
                         <div className="card-header">
                             <h3>{user.username}</h3>
                         </div>
@@ -42,7 +42,10 @@ export const CompanySearchList = (props) => {
                                 className="btn badge-warning btn-block mt-2">View User</Link>}
                             {!user.state && <button 
                             className="btn btn-success btn-block"
-                            onClick={e => props.requestAccess(user.user_id)}>
+                            onClick={e => {
+                                props.requestAccess(user.user_id);
+                                console.log(`the user id: ${user.user_id}`)
+                            }}>
                                 Request Access To User
                             </button>}
                         </div>
