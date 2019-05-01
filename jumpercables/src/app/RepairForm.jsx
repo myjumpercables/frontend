@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Repair } from "../models/Repair";
 import {repairRepository} from "../api";
-
+import {Redirect} from 'react-router-dom';
 export class RepairForm extends Component {
   repairRepository = new repairRepository();
   state = {
@@ -33,6 +33,9 @@ export class RepairForm extends Component {
       cost: this.state.repairCost,
       date: this.state.repairDate,
     }, this.props.location.state.service.service_id)
+    .then(resp=>{
+      this.setState({redirect: "/company/home"});
+    })
     // clears the form
     this.setState({
       repairType: "",
@@ -43,6 +46,9 @@ export class RepairForm extends Component {
   }
 
   render() {
+    if(this.state.redirect){
+      return <Redirect to={this.state.redirect}/>
+    }
     return (
       <>
         <div className="container">
