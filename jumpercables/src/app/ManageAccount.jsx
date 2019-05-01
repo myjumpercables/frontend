@@ -8,8 +8,7 @@ export class ManageAccount extends Component {
         name: "",
         email: "",
         phone: "",
-        state: "",
-        city: "",
+        location: "",
         description: "",
         password: "",
         changes: false,
@@ -21,9 +20,6 @@ export class ManageAccount extends Component {
         this.setState({state: e.target.value})
     }
     
-    saveChanges() {
-
-    }
 
     saveAccountDetails() {
     }
@@ -92,24 +88,14 @@ export class ManageAccount extends Component {
                         </div>
                     </div>
                     <div className="form-row">
-                        <div className="col-lg-6">
-                        <label htmlFor="state">State</label>
-                        <select className="form-control" onChange={e => this.setState({state: e.target.value})} id="state">
-                            <option key={-1}></option>
-                            {
-                                states.map((state, i) => (
-                                    <option key={i} value={state.abbreviation}>{state.name}</option>
-                                ))
-                            }
-                        </select>
-                        </div>
-                        <div className="col-md">
-                        <label htmlFor="city">City</label>
+                        <div className="col-lg">
+                        <label htmlFor="location">State</label>
                         <input
-                            className="form-control" 
-                            id="city"
-                            value={this.state.city}
-                            onChange={e => this.setState({city: e.target.value})}/>
+                            type="text"
+                            className="form-control"
+                            id="text"
+                            value={this.state.location}
+                            onChange={e => this.setState({ loca: e.target.value})}/>
                         </div>
                     </div>
                 </form>
