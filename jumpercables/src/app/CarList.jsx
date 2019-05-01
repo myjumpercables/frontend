@@ -4,14 +4,12 @@ import "./styles/CarList.css";
 const CarList = props => {
   if (!props.cars.length)
     return (
-      <div className="container rounded mt-1 mb-1">
-        <div
-          className="navbar navbar-light"
-          style={{ backgroundColor: " #f2f2f2" }}
-        >
-          Add a car!
-        </div>
-        <div className="col-lg-4 mt-2 mb-2">
+      <div className="container rounded mt-3 mb-1">
+        <center>
+          {" "}
+          <h1>Your Cars</h1>
+        </center>
+        <div>
           <Link
             id="car-fa"
             className="btn btn-secondary container text-black card h-100 bg-light d-flex flex-column justify-content-center align-middle"
@@ -34,11 +32,15 @@ const CarList = props => {
     );
   return (
     <div className="container mt-2">
+      <center>
+        {" "}
+        <h1>Your Cars</h1>
+      </center>
       <div className="row">
         {props.cars.map((car, i) => (
           <div className="col-lg-4 mt-2 mb-2" key={i}>
             <div className="card bg-light">
-              <div className="card-header">
+              <div className="card-header text-white bg-dark ">
                 <h3>Make: {car.make}</h3>
                 <h3>Model: {car.model}</h3>
                 <h3>Year: {car.year}</h3>
