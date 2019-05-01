@@ -7,6 +7,7 @@ export class carRepository {
 
     getCars() {
         let id = JSON.parse(localStorage.getItem('user')).id
+        console.log(id);
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/cars/${id}`, this.config)
             .then(resp => resolve(resp.data))
@@ -14,11 +15,12 @@ export class carRepository {
         })
     }
 
-    getCars(id) {
+    getCar(userId) {
+        console.log(userId);
         return new Promise((resolve, reject) => {
-            axios.get(`${this.url}/cars/${id}`, this.config)
-                .then(resp => resolve(resp.data))
-                .catch(resp => alert(resp));
+            axios.get(`${this.url}/cars/${userId}`, this.config)
+            .then(resp => resolve(resp.data))
+            .catch(resp => alert(resp));
         })
     }
 

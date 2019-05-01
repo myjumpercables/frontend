@@ -18,10 +18,6 @@ export class CompanyLanding extends Component {
         }))
     }
 
-    searchUser(user) {
-
-    }
-
     render() {
         return(
             <>

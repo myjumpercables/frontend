@@ -14,11 +14,11 @@ export const CompanyRecentList = (props) => {
         {props.fromSearch && <div className=" text-info m-2 mb-0">
             From Search:
         </div>}
-        <div className="row mt-2">
+        <div className="flex-row row mt-2">
             {
                 props.users.map((user, i) =>
-                    <div key={i} className=" col-md-4 mb-3">
-                        <div className="card bg-light">
+                    <div key={i} className="col-xs-6 col-md-4 mb-3">
+                        <div className="card h-100 bg-light">
                             <div className="card-header">
                                 <h3>{user.username}</h3>
                             </div>
@@ -44,7 +44,10 @@ export const CompanyRecentList = (props) => {
                                     className="btn badge-warning btn-block mt-2">View User</Link>}
                                 {!user.state && <button
                                     className="btn btn-success btn-block"
-                                    onClick={e => props.requestAccess(i)}>
+                                    onClick={e => {
+                                        props.requestAccess(user.user_id);
+                                        console.log(`the user id: ${user.user_id}`)
+                                    }}>
                                     Request Access To User
                                 </button>}
                             </div>

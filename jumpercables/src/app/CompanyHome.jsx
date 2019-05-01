@@ -15,12 +15,18 @@ export class CompanyHome extends Component {
     }
     userRepository = new userRepository();
     
+    removeFromSearch(userId) {
+        this.setState({usersSearch: this.state.usersSearch.filter(user => user.user_id !== userId)})
+    }
+
     requestAccess(userId) {
         this.userRepository.spawnRequest(userId)
         .then((resp, err) =>{
             if (err) throw err;
             this.setState({alertMessage: resp.error ? "Their Response is Still Pending" : "Request Successfully Sent"});
+            this.removeFromSearch(userId);
         }).catch(err =>{
+            this.removeFromSearch(userId);
             console.log(err);
         })
     }

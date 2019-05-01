@@ -8,24 +8,24 @@ export class RepairForm extends Component {
     repairType: "",
     repairCost: "",
     repairDesc: "",
-    repairDate: new Date()
+    repairDate: new Date(),
+    redirect: ""
   };
 
   onSubmit() {
     this.repairRepository.addRepair({
       car_repair: '',
+      repair_type: this.state.repairType,
       repair_desc: this.state.repairDesc,
       cost: this.state.repairCost,
       date: this.state.repairDate,
     }, this.props.location.state.service.service_id)
     // clears the form
     this.setState({
-      subject: '',
-      description: '',
       repairType: "",
-      repairCost: "",
-      repairDesc: "",
-      repairDate: ""
+    repairCost: "",
+    repairDesc: "",
+    repairDate: new Date(),
     });
   }
 

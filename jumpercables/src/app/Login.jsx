@@ -28,8 +28,10 @@ export class Login extends Component {
                     LOGIN
                 </h2>
             </div>
+
             <div className="d-flex align-items-center">
                 <form>
+                    {!!this.props.error && <small className="text-danger font-weight-bold">{this.props.error}</small>}
                     <div className="mb-2 form-group">
                         <label className="" htmlFor="loginEmail">Username</label>
                         <input onChange={e => this.setState({ loginUser : e.target.value })} 
