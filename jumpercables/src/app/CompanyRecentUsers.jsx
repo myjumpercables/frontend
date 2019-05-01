@@ -35,7 +35,7 @@ export const CompanyRecentList = (props) => {
                             <div className="card-footer">
                                 {user.state && <Link
                                     to={{
-                                        pathname: `/company/repairs/${i}`,
+                                        pathname: `/company/repairs/${user.user_id}`,
                                         state: {
                                             userId: user.user_id,
                                             redirect: "/company/home"
