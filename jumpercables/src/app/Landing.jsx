@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
-import { Login } from './Login';
-import { CreateAccount } from './CreateAccount'
+import { Login } from './Account/Login';
+import { CreateAccount } from './Account/CreateAccount'
 import { Home } from './Home';
 import logo from './styles/Local-Repair-Shop.jpg'
 import { userRepository } from '../api';

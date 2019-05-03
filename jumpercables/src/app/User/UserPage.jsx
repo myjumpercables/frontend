@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Link} from 'react-router-dom';
-import { OnlineViewHeader } from './OnlineViewHeader'
-import { userRoutes, companyRoutes} from '../routes'
-import './styles/UserPage.css'
+import { OnlineViewHeader } from '../OnlineViewHeader'
+import { userRoutes, companyRoutes} from '../../routes'
+import '../styles/UserPage.css'
 
 
 export class UserPage extends Component {

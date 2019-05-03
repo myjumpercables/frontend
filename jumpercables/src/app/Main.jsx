@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { CompanyLanding } from './CompanyLanding';
-import { UserLanding } from './UserLanding';
+import { CompanyLanding } from './Company/CompanyLanding';
+import { UserLanding } from './User/UserLanding';
 import { userRepository } from '../api'
 import { Landing } from './Landing';
 import { PrivateRoute } from '../_components';

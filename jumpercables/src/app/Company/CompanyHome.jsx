@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { CompanySearch } from './CompanySearch';
-import { CompanySearchList } from './CompanySearchList'
-import User from '../models/User'
-import { Car } from '../models/Car';
-import { userRepository } from '../api/userRepository';
+import { CompanySearchList } from './CompanySearchList';
+import { userRepository } from '../../api/userRepository';
 import { CompanyRecentList } from './CompanyRecentUsers';
 
 export class CompanyHome extends Component {

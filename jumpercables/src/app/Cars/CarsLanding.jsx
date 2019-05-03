@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { RepairForm } from './RepairForm';
-import { CarForm } from './CarForm';
+import { RepairForm } from '../Repairs/RepairForm';
 import CarList from './CarList';
-import { Link } from 'react-router-dom';
-import './styles/CarsLanding.css'
-import { Car } from '../models/Car';
-import { carRepository } from '../api/carRepository';
+import '../styles/CarsLanding.css'
+import { carRepository } from '../../api/carRepository';
 export class CarsLanding extends Component{
     carsRepository = new carRepository();
     

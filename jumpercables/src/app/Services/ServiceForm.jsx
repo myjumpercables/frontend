@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { serviceRepository } from '../api/serviceRepository'
+import { serviceRepository } from '../../api/serviceRepository'
 import { Redirect } from 'react-router-dom'
 
 export class ServiceForm extends Component {

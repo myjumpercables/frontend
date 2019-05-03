@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { AccountRegister } from "../models/AccountRegister";
-import mods from "../utils/mods";
+import mods from "../../utils/mods";
 export class CreateAccount extends Component {
   state = {
     name: "",

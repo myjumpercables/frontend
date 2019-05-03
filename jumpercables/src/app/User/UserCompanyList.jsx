@@ -1,6 +1,4 @@
 import React from "react";
-import { companyRoutes } from "../routes";
-import Company from "../models/Company";
 
 export const UserCompanyList = props => (
   <div className="container">

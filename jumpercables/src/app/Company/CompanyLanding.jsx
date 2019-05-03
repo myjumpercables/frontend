@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  { UserPage } from './UserPage';
+import  { UserPage } from '../User/UserPage';
 import { Route } from 'react-router-dom';
 
 export class CompanyLanding extends Component {

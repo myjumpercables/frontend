@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles/CarList.css";
+import "../styles/CarList.css";
 const CarList = props => {
   if (!props.cars.length)
     return (

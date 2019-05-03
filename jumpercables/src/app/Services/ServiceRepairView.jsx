@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import {Repair} from "../models/Repair";
-import {Car} from "../models/Car";
 import {ServiceRepairList} from "./ServiceRepairList";
-import {Service} from "../models/Service";
-import {carRepository} from "../api";
+import {carRepository} from "../../api";
 
 export class ServiceRepairView extends Component {
     carsRepository = new carRepository();

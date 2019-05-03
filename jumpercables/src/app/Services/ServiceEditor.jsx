@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Service } from '../models/Service';
+import { Service } from '../../models/Service';
 import { ServiceList } from './ServiceList';
 
 export class ServiceEditor extends Component {

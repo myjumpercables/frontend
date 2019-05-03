@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import "./styles/AccountView.css";
-import util from "../utils/mods";
-import states from "../models/statelist";
-import { userRepository } from "../api";
+import "../styles/AccountView.css";
+import util from "../../utils/mods";
+import {userRepository} from "../../api";
 
 export class ManageAccount extends Component {
     state = {
@@ -23,7 +22,6 @@ export class ManageAccount extends Component {
   baseState = this.state;
 
     userRepository = new userRepository();
-  
     switchSelect(e) {
         this.setState({state: e.target.value})
     }
@@ -351,32 +349,32 @@ export class ManageAccount extends Component {
   }
 }
 
-const getControl = flag => {
-  switch (flag) {
-    case 1:
-      return {
-        euError: document.getElementById("newEUError"),
-        email: document.getElementById("newEmail"),
-        emailError: document.getElementById("newEmailError"),
-        user: document.getElementById("newUsername"),
-        userError: document.getElementById("newUsernameError"),
-        password: document.getElementById("passwordCheck"),
-        passwordError: document.getElementById("passwordCheckError")
-      };
-
-    case 2:
-      return {
-        oldPassword: document.getElementById("oldPassword"),
-        oldPasswordError: document.getElementById("oldPasswordError"),
-        newPassword: document.getElementById("newPassword"),
-        newPasswordError: document.getElementById("newPasswordError"),
-        newPasswordCheck: document.getElementById("newPasswordCheck"),
-        newPasswordCheckError: document.getElementById("newPasswordCheckError")
-      };
-    default:
-      return {};
-  }
-};
+// const getControl = flag => {
+//   switch (flag) {
+//     case 1:
+//       return {
+//         euError: document.getElementById("newEUError"),
+//         email: document.getElementById("newEmail"),
+//         emailError: document.getElementById("newEmailError"),
+//         user: document.getElementById("newUsername"),
+//         userError: document.getElementById("newUsernameError"),
+//         password: document.getElementById("passwordCheck"),
+//         passwordError: document.getElementById("passwordCheckError")
+//       };
+//
+//     case 2:
+//       return {
+//         oldPassword: document.getElementById("oldPassword"),
+//         oldPasswordError: document.getElementById("oldPasswordError"),
+//         newPassword: document.getElementById("newPassword"),
+//         newPasswordError: document.getElementById("newPasswordError"),
+//         newPasswordCheck: document.getElementById("newPasswordCheck"),
+//         newPasswordCheckError: document.getElementById("newPasswordCheckError")
+//       };
+//     default:
+//       return {};
+//   }
+// };
 
 // const saveAccountDetails = e => {
 //   let controls = getControl(1);
@@ -440,11 +438,9 @@ const getControl = flag => {
 //   }
 // };
 
-const clearManagePasswordModal = e => {
-  let controls = getControl(2);
-  for (var key in controls) {
-    controls[key].innerHTML = "";
-    controls[key].value = "";
-  }
-};
-export default ManageAccount;
+// const clearManagePasswordModal = e => {
+//   let controls = getControl(2);
+//   for (var key in controls) {
+//     controls[key].innerHTML = "";
+//     controls[key].value = "";
+//   }

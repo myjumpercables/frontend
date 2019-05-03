@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import User from "../models/User";
-import {Car} from "../models/Car";
 import {Link} from 'react-router-dom'
-import { carRepository } from '../api/carRepository';
+import { carRepository } from '../../api/carRepository';
 
 export class CompanyUserView extends Component {
     carRepository = new carRepository();

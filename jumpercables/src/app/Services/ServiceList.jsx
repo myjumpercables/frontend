@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/ServiceList.css'
+import '../styles/ServiceList.css'
 
 export const ServiceList = (props) => (
     <div className="services container">

@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
-import { userRepository } from '../api';
-import { Request } from '../models/Request';
+import { userRepository } from '../../api';
 import { UserCompanyList } from './UserCompanyList';
 import { UserRequests } from './UserRequests';
-import { Company } from '../models/Company';
-import { Redirect } from 'react-router-dom'
 
 export class UserHome extends Component {
     state = {

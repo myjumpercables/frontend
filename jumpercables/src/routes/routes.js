@@ -1,15 +1,13 @@
-import {CarsLanding} from '../app/CarsLanding'
-import {RepairLanding} from '../app/RepairLanding'
-import {ServiceLanding} from '../app/ServiceLanding'
-import {ManageAccount} from '../app/ManageAccount'
-import {CompanySearch} from '../app/CompanySearch'
-import {ServiceForm} from '../app/ServiceForm'
-import {CarForm} from '../app/CarForm';
-import {CompanyHome} from '../app/CompanyHome';
-import {RepairForm} from '../app/RepairForm';
-import {ServiceRepairView} from '../app/ServiceRepairView';
-import {UserHome} from '../app/UserHome';
-import {CompanyUserView} from "../app/CompanyUserView";
+import {CarsLanding} from '../app/Cars/CarsLanding'
+import {ServiceLanding} from '../app/Services/ServiceLanding'
+import {ManageAccount} from '../app/Account/ManageAccount'
+import {ServiceForm} from '../app/Services/ServiceForm'
+import {CarForm} from '../app/Cars/CarForm';
+import {CompanyHome} from '../app/Company/CompanyHome';
+import {RepairForm} from '../app/Repairs/RepairForm';
+import {ServiceRepairView} from '../app/Services/ServiceRepairView';
+import {UserHome} from '../app/User/UserHome';
+import {CompanyUserView} from "../app/Company/CompanyUserView";
 
 const userRoutes = (path = "/user") => {
     return [
@@ -25,15 +23,15 @@ const userRoutes = (path = "/user") => {
         },
 
         {
-            path: `${path}/manageaccount`,
-            text: "Manage Your Account",
-            component: ManageAccount
-        },
-
-        {
             path: `${path}/repairs`,
             text: "View Services and Repairs",
             component: ServiceRepairView
+        },
+
+        {
+            path: `${path}/manageaccount`,
+            text: "Manage Your Account",
+            component: ManageAccount
         },
 
         {

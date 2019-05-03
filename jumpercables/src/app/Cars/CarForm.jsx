@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Car } from "./../models/Car";
+import { Car } from "../../models/Car";
 import { Redirect } from 'react-router-dom'
-import { carRepository } from "../api/carRepository";
+import { carRepository } from "../../api/carRepository";
 
 export class CarForm extends Component {
   state = {

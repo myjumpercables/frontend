@@ -35,7 +35,6 @@ export const ServiceRepairList = (props) => {
                                                     </h5>
                                                 </div>
                                                 {!!service.repairs.length && service.repairs.map((repair, k) =>
-
                                                     <div id={`service${i}${j}`} className="collapse"
                                                          aria-labelledby={`heading${j}`} data-parent="#accordion" key={k}>
                                                         <div className="card-body" id={`accordion${i}${j}`}>

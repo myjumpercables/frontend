@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/OnlineView.css'
+import '../styles/OnlineView.css'
 import { UserPage } from './UserPage';
 
 import { Route } from 'react-router-dom';
